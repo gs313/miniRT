@@ -6,13 +6,13 @@
 #    By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 10:24:19 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/16 10:59:37 by scharuka         ###   ########.fr        #
+#    Updated: 2024/08/16 12:03:47 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libvec.a
 
-SRCS = vec_init.c vec_add.c vec_len.c vec_sub.c vec_norm.c vec_prodict.c vec_scale.c
+SRCS = vec_init.c vec_add.c vec_len.c vec_sub.c vec_norm.c vec_product.c vec_scale.c
 
 OBJS := $(SRCS:.c=.o)
 
