@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:59:45 by scharuka          #+#    #+#             */
-/*   Updated: 2023/09/05 14:57:47 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/17 03:35:03 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
+#  define OPEN_MAX 256
 # endif
 
 # include <stdio.h>

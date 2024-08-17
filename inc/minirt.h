@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 02:47:05 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/17 03:31:54 by scharuka         ###   ########.fr       */
+/*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
+/*   Updated: 2024/08/17 00:15:12 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include <limits.h>
-#define SIZE_MAX UINT_MAX
+#ifndef MINIRT_H
+# define MINIRT_H
+# include <math.h>
+# include <stdio.h>
+# define WIN_WIDTH 900
+# define WIN_HEIGHT 600
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*a;
-
-	if (count == SIZE_MAX || size == SIZE_MAX)
-		return (NULL);
-	a = (void *)malloc(count * size);
-	if (!a)
-		return (NULL);
-	ft_bzero(a, count * size);
-	return (a);
-}
+#endif
