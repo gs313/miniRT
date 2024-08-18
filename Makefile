@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
+#    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/17 17:52:23 by scharuka         ###   ########.fr        #
+#    Updated: 2024/08/19 01:55:17 by ookamonu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc
 
-CPPFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux
+CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux
 
 HEADER = inc/minirt.h
 
@@ -30,7 +30,7 @@ LIBFT_LIB = lib/libft_modified/libft.a
 
 LIBVEC_LIB = lib/libvec/libvec.a
 
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(SRC:.c=.o)
 
 all:  $(NAME)
 
@@ -41,7 +41,7 @@ $(NAME):$(OBJ) $(HEADER)
 	@make -C lib/minilibx-linux/
 	@make -C lib/libft_modified/
 	@make -C lib/libvec/
-	$(CC) $(CPPFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(LIBVEC_LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(LIBVEC_LIB) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ)
