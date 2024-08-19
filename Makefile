@@ -6,7 +6,7 @@
 #    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/17 17:52:23 by scharuka         ###   ########.fr        #
+#    Updated: 2024/08/18 23:46:21 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CPPFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux
 
 HEADER = inc/minirt.h
 
-MLX_LIB = lib/minilibx-linux/libmlx.a
+MLX_LIB = lib/MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 LIBFT_LIB = lib/libft_modified/libft.a
 
@@ -38,8 +38,11 @@ all:  $(NAME)
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):$(OBJ) $(HEADER)
-	@make -C lib/minilibx-linux/
 	@make -C lib/libft_modified/
+	# @cd lib/MLX42
+	# @cmake -B build
+	# @cmake --build build -j4
+	# @cd ../..
 	@make -C lib/libvec/
 	$(CC) $(CPPFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(LIBVEC_LIB) -o $(NAME)
 
