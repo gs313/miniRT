@@ -6,7 +6,7 @@
 #    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/19 15:27:52 by ookamonu         ###   ########.fr        #
+#    Updated: 2024/08/19 18:26:08 by ookamonu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,8 +92,8 @@ all: libmlx $(NAME)
 	$(CC) $(CFLAGS) -O3 -c $< -o $@
 
 $(NAME): $(OBJ) $(HEADER)
-	@make -C lib/libft_modified/
-	@make -C lib/libvec/
+	@make -s -C lib/libft_modified/
+	@make -s -C lib/libvec/
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(LIBVEC_LIB) $(GLFW_LIB) -o $(NAME)
 
 libmlx:
@@ -102,12 +102,12 @@ libmlx:
 clean:
 	rm -rf $(OBJ)
 	rm -rf lib/MLX42/build
-	@make -C lib/libft_modified fclean
-	@make -C lib/libvec fclean
+	@make -s -C lib/libft_modified fclean
+	@make -s -C lib/libvec fclean
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re libmlx
+.PHONY: all clean fclean re
