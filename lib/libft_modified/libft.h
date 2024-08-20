@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 09:51:38 by sicharuk          #+#    #+#             */
-/*   Updated: 2024/08/17 03:34:44 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:24:01 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+
+# ifndef OPEN_MAX
 #  define OPEN_MAX 256
+# endif
+
 # include "get_next_line.h"
 
 typedef struct s_list

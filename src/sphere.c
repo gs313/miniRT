@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 01:53:42 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/20 21:18:42 by scharuka         ###   ########.fr       */
+/*   Created: 2024/08/20 12:30:35 by scharuka          #+#    #+#             */
+/*   Updated: 2024/08/20 21:18:34 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	main()
+void	sphere_init(t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d)
 {
-	// void *mlx = mlx_init();
-	// void *win = mlx_new_window(mlx, 640, 360, "Tutorial Window");
-	void	*mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Tutorial Window", true);
-	mlx_image_t	*img = mlx_new_image(mlx, 640, 360);
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_loop(mlx);
-	return (0);
+	obj->type = 1;
+	obj->coord = coord;
+	obj->r = r;
+	obj->g = g;
+	obj->b = b;
+	obj->d = d;
 }
+
