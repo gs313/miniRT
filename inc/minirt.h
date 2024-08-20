@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/20 03:11:45 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/20 21:31:44 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
 
-typedef struct s_scene
-{
 
-}	t_scene;
 typedef	struct s_camera
 {
 	double			x;
@@ -45,5 +42,30 @@ typedef struct s_object
 	double			h;
 }	t_object;
 
+typedef struct s_amblight
+{
+	double			ratio;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}	t_amblight;
+
+typedef struct s_light
+{
+	t_vector		coord;
+	double			ratio;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}	t_light;
+typedef struct s_scene
+{
+	t_camera		cam;
+	t_object		*obj;
+	unsigned int	obj_count;
+	t_amblight		amb;
+	t_light			*light;
+	unsigned int	light_count;
+}	t_scene;
 
 #endif
