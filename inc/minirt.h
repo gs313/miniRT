@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/21 11:42:29 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:54:19 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,12 @@ typedef struct s_scene
 	float			img_width;
 	float			img_height;
 }	t_scene;
+
+//camera.c
+void	camera_init(t_camera *cam, double x, double y, double z, t_vector dir, unsigned int dec);
+void	viewport_init(t_scene *scene);
+
+// sphere.c
+void	sphere_init(t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d);
 
 #endif
