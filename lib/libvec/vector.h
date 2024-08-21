@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:24:14 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/16 10:53:16 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:45:31 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_vector
 }	t_vector;
 
 t_vector	vec_init(double x, double y, double z);
-t_vector	vec_sum(t_vector a, t_vector b);
+t_vector	vec_add(t_vector a, t_vector b);
 t_vector	vec_sub(t_vector a, t_vector b);
 t_vector	vec_cross(t_vector a, t_vector b);
 double		vec_dot(t_vector a, t_vector b);

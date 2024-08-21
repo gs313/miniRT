@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/20 21:31:44 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:42:29 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h" // MLX42 library header
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
+# define M_PI 3.14159265358979323846
 
 
 typedef	struct s_camera
@@ -25,6 +26,7 @@ typedef	struct s_camera
 	double			x;
 	double			y;
 	double			z;
+	t_vector		coord;
 	t_vector		dir;
 	unsigned int	dec;
 
@@ -58,6 +60,14 @@ typedef struct s_light
 	unsigned int	g;
 	unsigned int	b;
 }	t_light;
+
+typedef struct s_viewport
+{
+	t_vector		delta_u;
+	t_vector		delta_v;
+	t_vector		pixel00_loc;
+}	t_viewport;
+
 typedef struct s_scene
 {
 	t_camera		cam;
@@ -66,6 +76,9 @@ typedef struct s_scene
 	t_amblight		amb;
 	t_light			*light;
 	unsigned int	light_count;
+	t_viewport		view;
+	float			img_width;
+	float			img_height;
 }	t_scene;
 
 #endif
