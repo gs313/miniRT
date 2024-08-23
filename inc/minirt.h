@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/23 23:27:31 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 04:40:24 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
 # define M_PI 3.14159265358979323846
-
+# define SPHERE 1
+# define PLANE 2
+# define CYLINDER 3
 
 typedef	struct s_camera
 {
@@ -70,10 +72,11 @@ typedef struct s_viewport
 
 typedef struct s_hit
 {
-	int			opj_id;
+	int			obj_id;
 	t_vector	hitpoint;
-	double		
+	double		distance;
 } t_hit;
+
 typedef struct s_scene
 {
 	t_camera		cam;
@@ -95,8 +98,14 @@ void	viewport_init(t_scene *scene);
 
 // sphere.c
 void	sphere_init(t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d);
+t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir);
 
 // color.c
 int32_t rgb_to_int(int32_t r, int32_t g, int32_t b, int32_t a);
+
+//hit.c
+t_hit	hit_init(void);
+t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/23 22:27:05 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 04:50:08 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		render (t_scene *scene)
 {
 	t_vector	pixel_loc;
 	t_vector	ray_dir;
-	t_vector	color;
+	uint32_t	color;
 	int			x;
 	int			y;
 
@@ -66,6 +66,12 @@ int		render (t_scene *scene)
 
 uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir)
 {
-	
-	return (0);
+	t_hit	hit;
+	uint32_t color;
+
+	hit = hit_closest(scene, origin, dir);
+	if (hit.obj_id == -1)
+		return (rgb_to_int(0, 0, 0, 0));
+	color = rgb_to_int(scene->obj[hit.obj_id].r, scene->obj[hit.obj_id].g, scene->obj[hit.obj_id].b, 0);
+	return (color);
 }
