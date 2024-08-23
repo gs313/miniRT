@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/23 18:04:25 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/23 22:27:05 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int		render (t_scene *scene)
 
 uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir)
 {
+	
 	return (0);
 }

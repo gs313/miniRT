@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/23 17:45:10 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/23 23:27:31 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ typedef struct s_viewport
 	t_vector		pixel00_loc;
 }	t_viewport;
 
+typedef struct s_hit
+{
+	int			opj_id;
+	t_vector	hitpoint;
+	double		
+} t_hit;
 typedef struct s_scene
 {
 	t_camera		cam;
