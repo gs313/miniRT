@@ -6,14 +6,15 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 04:50:08 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 04:57:26 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	camera_init(t_camera *cam, double x, double y, double z, t_vector dir, unsigned int dec)
+t_camera	camera_init(double x, double y, double z, t_vector dir, unsigned int dec)
 {
+	t_camera	*cam;
 	cam->x = x;
 	cam->y = y;
 	cam->z = z;

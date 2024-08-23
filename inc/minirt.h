@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 04:40:24 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 05:03:47 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ typedef struct s_scene
 	t_object		*obj;
 	unsigned int	obj_count;
 	t_amblight		amb;
-	t_light			*light;
-	unsigned int	light_count;
+	t_light			light;
 	t_viewport		view;
 	float			img_width;
 	float			img_height;
@@ -93,8 +92,10 @@ typedef struct s_scene
 }	t_scene;
 
 //camera.c
-void	camera_init(t_camera *cam, double x, double y, double z, t_vector dir, unsigned int dec);
+t_camera	camera_init(double x, double y, double z, t_vector dir, unsigned int dec);
 void	viewport_init(t_scene *scene);
+int		render (t_scene *scene);
+
 
 // sphere.c
 void	sphere_init(t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d);
@@ -107,5 +108,9 @@ int32_t rgb_to_int(int32_t r, int32_t g, int32_t b, int32_t a);
 t_hit	hit_init(void);
 t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);
 
+//scene.c
+t_amblight amblight_init(double ratio, unsigned int r, unsigned int g, unsigned int b);
+t_light light_init(t_vector coord, double ratio, unsigned int r, unsigned int g, unsigned int b);
+t_scene	scene_init(unsigned int nb_obj);
 
 #endif
