@@ -6,14 +6,14 @@
 #    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/20 21:29:29 by scharuka         ###   ########.fr        #
+#    Updated: 2024/08/23 17:12:00 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = MiniRT
 
 SRC_DIR = src/
-FILES = minirt.c
+FILES = minirt.c sphere.c camera.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc
