@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/23 17:12:22 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:04:25 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,35 @@ void	viewport_init(t_scene *scene)
 	scene->view.pixel00_loc = vec_add(scene->view.pixel00_loc, vec_scale(scene->view.delta_u, 0.5));
 	scene->view.pixel00_loc = vec_add(scene->view.pixel00_loc, vec_scale(scene->view.delta_v, 0.5));
 	//still need to test
+}
+
+int		render (t_scene *scene)
+{
+	t_vector	pixel_loc;
+	t_vector	ray_dir;
+	t_vector	color;
+	int			x;
+	int			y;
+
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			pixel_loc = vec_add(scene->view.pixel00_loc, vec_scale(scene->view.delta_u, x));
+			pixel_loc = vec_add(pixel_loc, vec_scale(scene->view.delta_v, y));
+			ray_dir = vec_norm(vec_sub(pixel_loc, scene->cam.coord));
+			color = trace_ray(scene, scene->cam.coord, ray_dir);
+			mlx_pixel_put(scene->img, x, y, color);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir)
+{
+	return (0);
 }

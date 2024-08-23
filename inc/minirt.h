@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/23 15:19:19 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:45:10 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_scene
 	t_viewport		view;
 	float			img_width;
 	float			img_height;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
 }	t_scene;
 
 //camera.c
@@ -87,5 +89,8 @@ void	viewport_init(t_scene *scene);
 
 // sphere.c
 void	sphere_init(t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d);
+
+// color.c
+int32_t rgb_to_int(int32_t r, int32_t g, int32_t b, int32_t a);
 
 #endif
