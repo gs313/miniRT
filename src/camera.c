@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 04:57:26 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:24:51 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 t_camera	camera_init(double x, double y, double z, t_vector dir, unsigned int dec)
 {
-	t_camera	*cam;
-	cam->x = x;
-	cam->y = y;
-	cam->z = z;
-	cam->dir = dir;
-	cam->dec = dec;
+	t_camera	cam;
+	// cam->x = x;
+	// cam->y = y;
+	// cam->z = z;
+	// cam->dir = dir;
+	// cam->dec = dec;
+	cam.x = x;
+	cam.y = y;
+	cam.z = z;
+	cam.dir = dir;
+	cam.dec = dec;
+	return (cam);
 }
 
 void	viewport_init(t_scene *scene)
@@ -57,7 +63,7 @@ int		render (t_scene *scene)
 			pixel_loc = vec_add(pixel_loc, vec_scale(scene->view.delta_v, y));
 			ray_dir = vec_norm(vec_sub(pixel_loc, scene->cam.coord));
 			color = trace_ray(scene, scene->cam.coord, ray_dir);
-			mlx_pixel_put(scene->img, x, y, color);
+			mlx_put_pixel(scene->img, x, y, color);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 05:03:47 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:25:24 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_scene
 t_camera	camera_init(double x, double y, double z, t_vector dir, unsigned int dec);
 void	viewport_init(t_scene *scene);
 int		render (t_scene *scene);
+uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir)
 
 
 // sphere.c
