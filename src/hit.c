@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:33:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 04:35:41 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:36:57 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_hit	hit_init(void)
 
 t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir)
 {
-	t_hit	hit;
-	t_hit	tmp;
-	int		i;
+	t_hit				hit;
+	t_hit				tmp;
+	unsigned int		i;
 
 	hit = hit_init();
 	i = 0;

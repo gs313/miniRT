@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
+#    By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/24 15:22:42 by scharuka         ###   ########.fr        #
+#    Updated: 2024/08/24 15:41:26 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS = -Wall -Wextra -Werror -I/usr/include -Ilib/MLX42/include
 HEADER = inc/minirt.h
 
 MLX_LIB = lib/MLX42/build/libmlx42.a
-MLX_LIB = lib/MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+# MLX_LIB = lib/MLX42/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 LIBFT_LIB = lib/libft_modified/libft.a
 LIBVEC_LIB = lib/libvec/libvec.a
