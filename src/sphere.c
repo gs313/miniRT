@@ -6,14 +6,15 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:30:35 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 04:36:36 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/25 14:42:03 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	sphere_init(t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d)
+void	sphere_init(int id, t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d)
 {
+	obj->id = id;
 	obj->type = 1;
 	obj->coord = coord;
 	obj->r = r;
@@ -45,7 +46,7 @@ t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir)
 		t = (-b + sqrt(discr)) / (2.0 * a);
 	if (t < 0)
 		return (hit);
-	hit.obj_id = 0;
+	hit.obj_id = obj.id;
 	hit.hitpoint = vec_add(origin, vec_scale(dir, t));
 	hit.distance = t;
 	return (hit);
