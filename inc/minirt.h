@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/25 23:21:55 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 01:45:10 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,19 @@
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
+# define TRUE 1
+# define FALSE 0
 # define SMALL_NUM 0.00000001f
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
 
+typedef struct s_color
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}	t_color;
 typedef	struct s_camera
 {
 	double			x;
@@ -109,6 +117,9 @@ t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir);
 
 // color.c
 int32_t rgb_to_int (int32_t r, int32_t g, int32_t b);
+int32_t cal_color (t_hit hit, t_vector ori, t_vector dir, t_scene *scene);
+
+
 //hit.c
 t_hit	hit_init(void);
 t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);

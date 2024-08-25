@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 01:53:42 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/25 23:09:32 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 02:05:38 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,15 @@ int	main(void)
 	// void	*mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Tutorial Window", true);
 	// mlx_image_t	*img = mlx_new_image(mlx, 640, 360);
 	t_scene	scene;
-	scene = scene_init(1);
-	// sphere_init(0, &scene.obj[0], vec_init(0, 0, 20), 0, 255, 0, 5);
+	// scene = scene_init(1);
+	//two spheres
+	scene = scene_init(2);
+	sphere_init(0, &scene.obj[0], vec_init(-5, 0, 20), 0, 255, 0, 5);
+	sphere_init(1, &scene.obj[1], vec_init(5, 0, 20), 0, 0, 255, 5);
+	light_init(vec_init(1,1,1), 0.5, 255, 0, 0);
 	// cylinder_init(0,&scene.obj[0], vec_init(0, 0, 50), vec_init(0, 0, 1), 0, 255, 0, 5, 10);
-	plane_init(0, &scene.obj[0], vec_init(0, -1, 50), vec_init(0, 1, 0), 0, 255, 0);
-	scene.cam = camera_init(0, 0, 0, vec_init(0, 0, -1), 40);
+	// plane_init(0, &scene.obj[0], vec_init(0, -1, 0), vec_init(0, 1, 0), 0, 255, 0);
+	scene.cam = camera_init(0, 0, 0, vec_init(0, 0, 1), 100);
 	render(&scene);
 	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
 	// mlx_loop_hook(scene.mlx, (void*)render, &scene); 	// hook function for key press events
