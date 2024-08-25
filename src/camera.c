@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/25 14:42:43 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/25 18:50:24 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		render (t_scene *scene)
 			ray_dir = vec_norm(vec_sub(pixel_loc, scene->cam.coord));
 			color = trace_ray(scene, scene->cam.coord, ray_dir);
 			mlx_put_pixel(scene->img, x, y, color);
-			printf("x: %d, y: %d c:%d \n ", x, y, color);
+			printf("x: %d, y: %d c:%u \n ", x, y, color);
 			x++;
 		}
 		y++;
@@ -74,7 +74,8 @@ uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir)
 
 	hit = hit_closest(scene, origin, dir);
 	if (hit.obj_id == -1)
-		return (rgb_to_int(0, 0, 0, 1));
-	color = rgb_to_int(scene->obj[hit.obj_id].r, scene->obj[hit.obj_id].g, scene->obj[hit.obj_id].b, 1);
+		return (rgb_to_int(255, 0, 0));
+	color = rgb_to_int(scene->obj[hit.obj_id].r, scene->obj[hit.obj_id].g, scene->obj[hit.obj_id].b);
+	printf("color: %u\n", color);
 	return (color);
 }

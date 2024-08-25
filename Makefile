@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+         #
+#    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/24 15:41:26 by scharuka         ###   ########.fr        #
+#    Updated: 2024/08/25 22:33:31 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = MiniRT
 
 SRC_DIR = src/
-FILES = minirt.c sphere.c camera.c hit.c color.c scene.c
+FILES = minirt.c sphere.c camera.c hit.c color.c scene.c plane.c cylinder.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc

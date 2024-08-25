@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/25 14:49:29 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/25 23:21:55 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
+# define SMALL_NUM 0.00000001f
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 typedef	struct s_camera
 {
@@ -104,8 +108,7 @@ void	sphere_init(int id, t_object *obj, t_vector coord, unsigned int r, unsigned
 t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir);
 
 // color.c
-uint32_t rgb_to_int(int32_t r, int32_t g, int32_t b, int32_t a);
-
+int32_t rgb_to_int (int32_t r, int32_t g, int32_t b);
 //hit.c
 t_hit	hit_init(void);
 t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);
@@ -114,5 +117,14 @@ t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);
 t_amblight amblight_init(double ratio, unsigned int r, unsigned int g, unsigned int b);
 t_light light_init(t_vector coord, double ratio, unsigned int r, unsigned int g, unsigned int b);
 t_scene	scene_init(unsigned int nb_obj);
+
+//plane.c
+// t_object	plane_init(int id, t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b);
+void	plane_init(int id, t_object *obj , t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b);
+t_hit	hit_plane(t_object obj, t_vector origin, t_vector dir);
+
+//cylinder.c
+void	cylinder_init(int id, t_object *obj, t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b, double d, double h);
+t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir);
 
 #endif
