@@ -6,12 +6,21 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:43:20 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 23:59:59 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 00:47:06 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+t_color color_init(unsigned int r, unsigned int g, unsigned int b)
+{
+    t_color color;
+
+    color.r = r;
+    color.g = g;
+    color.b = b;
+    return (color);
+}
 int32_t rgb_to_int (int32_t r, int32_t g, int32_t b)
 {
     return (r << 24 | g << 16 | b << 8 | 255);
@@ -28,7 +37,7 @@ int     is_shadow(t_scene *scene, t_vector origin, t_vector dir, t_hit hit)
     return (TRUE);
 }
 
-int32_t cal_color (t_hit hit, t_vector ori, t_vector dir, t_scene *scene)
+int32_t cal_color (t_hit hit, t_scene *scene)
 {
     float        dot;
     t_vector     hit_light;
@@ -40,7 +49,7 @@ int32_t cal_color (t_hit hit, t_vector ori, t_vector dir, t_scene *scene)
         hit_normal = vec_norm(scene->obj[hit.obj_id].dir);
     else if (scene->obj[hit.obj_id].type == SPHERE)
         hit_normal = vec_norm(vec_sub(hit.hitpoint, scene->obj[hit.obj_id].coord));
-    else if (scene->obj[hit.obj_id].type == CYLINDER)
+    else
     {
         if (hit.is_disk)
             hit_normal = vec_norm(scene->obj[hit.obj_id].dir);

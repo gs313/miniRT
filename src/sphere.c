@@ -6,23 +6,26 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:30:35 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 23:16:52 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 01:11:30 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	sphere_init(int id, t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d)
+t_object	sphere_init(int id, t_vector coord, t_color color, double d)
 {
-	obj->id = id;
-	obj->type = 1;
-	obj->coord = coord;
-	obj->coord.x = -coord.x;
-	obj->coord.y = -coord.y;
-	obj->r = r;
-	obj->g = g;
-	obj->b = b;
-	obj->d = d;
+	t_object	obj;
+
+	obj.id = id;
+	obj.type = SPHERE;
+	obj.coord = coord;
+	obj.coord.x = -coord.x;
+	obj.coord.y = -coord.y;
+	obj.r = color.r;
+	obj.g = color.g;
+	obj.b = color.b;
+	obj.d = d;
+	return (obj);
 }
 
 t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir)

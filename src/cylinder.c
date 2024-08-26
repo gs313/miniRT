@@ -6,28 +6,39 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:48 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 23:18:17 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 00:42:51 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	cylinder_init(int id, t_object *obj, t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b, double d, double h)
+t_cylinder_attr	cylinder_attr_init(t_vector dir, double d, double h)
 {
-	obj->id = id;
-	obj->type = CYLINDER;
-	obj->coord = coord;
-	obj->coord.x = -coord.x;
-	obj->coord.y = -coord.y;
-	obj->dir = vec_norm(dir);
-	obj->r = r;
-	obj->g = g;
-	obj->b = b;
-	obj->d = d;
-	obj->h = h;
+	t_cylinder_attr	attr;
+
+	attr.dir = dir;
+	attr.d = d;
+	attr.h = h;
+	return (attr);
 }
 
-#include "../inc/minirt.h"
+t_object	cylinder_init(int id, t_vector coord, t_cylinder_attr attr, t_color color)
+{
+	t_object	obj;
+
+	obj.id = id;
+	obj.type = CYLINDER;
+	obj.coord = coord;
+	obj.coord.x = -coord.x;
+	obj.coord.y = -coord.y;
+	obj.dir = vec_norm(attr.dir);
+	obj.r = color.r;
+	obj.g = color.g;
+	obj.b = color.b;
+	obj.d = attr.d;
+	obj.h = attr.h;
+	return (obj);
+}
 
 t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 {

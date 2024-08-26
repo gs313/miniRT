@@ -6,16 +6,16 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 17:55:43 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 00:50:16 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_camera	camera_init(double x, double y, double z, t_vector dir, unsigned int dec)
+t_camera	camera_init(t_vector coord, t_vector dir, unsigned int dec)
 {
 	t_camera	cam;
-	cam.coord = vec_init(x, y, z);
+	cam.coord = coord;
 	cam.dir = dir;
 	cam.dec = dec;
 	return (cam);
@@ -83,7 +83,7 @@ uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir)
 	hit = hit_closest(scene, origin, dir);
 	if (hit.obj_id == -1)
 		return (background_color(dir));
-	color = cal_color(hit, origin, dir, scene);
+	color = cal_color(hit, scene);
 	// color = rgb_to_int(scene->obj[hit.obj_id].r, scene->obj[hit.obj_id].g, scene->obj[hit.obj_id].b);
 	// printf("color: %u\n", color);
 	return (color);

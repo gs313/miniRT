@@ -6,20 +6,24 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:55 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 16:21:37 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 00:54:04 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-void	plane_init(int id, t_object *obj , t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b)
+
+t_object	plane_init(int id, t_vector coord, t_vector dir, t_color color)
 {
-	obj->id = id;
-	obj->type = PLANE;
-	obj->coord = coord;
-	obj->dir = vec_norm(dir);
-	obj->r = r;
-	obj->g = g;
-	obj->b = b;
+	t_object	obj;
+
+	obj.id = id;
+	obj.type = PLANE;
+	obj.coord = coord;
+	obj.dir = vec_norm(dir);
+	obj.r = color.r;
+	obj.g = color.g;
+	obj.b = color.b;
+	return (obj);
 }
 
 t_hit	hit_plane(t_object obj, t_vector origin, t_vector dir)

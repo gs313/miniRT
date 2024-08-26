@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 18:26:55 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 01:09:25 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,27 @@ typedef struct s_color
 	unsigned int	g;
 	unsigned int	b;
 }	t_color;
-typedef	struct s_camera
+
+typedef struct s_camera
 {
 	t_vector		coord;
 	t_vector		dir;
 	unsigned int	dec;
 
-}t_camera;
+}	t_camera;
+
+typedef struct s_cylinder_attr
+{
+	t_vector	dir;
+	double		d;
+	double		h;
+	double		t;
+	double		t1;
+	double		t2;
+	double		t_cap;
+	t_vector	hitpoint;
+	double		hit_height;
+}	t_cylinder_attr;
 
 typedef struct s_object
 {
@@ -83,7 +97,7 @@ typedef struct s_hit
 	t_vector	hitpoint;
 	double		distance;
 	int			is_disk;
-} t_hit;
+}	t_hit;
 
 typedef struct s_scene
 {
@@ -100,37 +114,38 @@ typedef struct s_scene
 }	t_scene;
 
 //camera.c
-t_camera	camera_init(double x, double y, double z, t_vector dir, unsigned int dec);
-void	viewport_init(t_scene *scene);
-int		render (t_scene *scene);
+t_camera	camera_init(t_vector coord, t_vector dir, unsigned int dec);
+void		viewport_init(t_scene *scene);
+int			render(t_scene *scene);
 uint32_t	trace_ray(t_scene *scene, t_vector origin, t_vector dir);
 
-
 // sphere.c
-void	sphere_init(int id, t_object *obj, t_vector coord, unsigned int r, unsigned int g, unsigned int b, double d);
-t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir);
+t_object	sphere_init(int id, t_vector coord, t_color color, double d);
+t_hit		hit_sphere(t_object obj, t_vector origin, t_vector dir);
 
 // color.c
-int32_t rgb_to_int (int32_t r, int32_t g, int32_t b);
-int32_t cal_color (t_hit hit, t_vector ori, t_vector dir, t_scene *scene);
-
+int32_t		rgb_to_int(int32_t r, int32_t g, int32_t b);
+int32_t		cal_color(t_hit hit, t_scene *scene);
+int			is_shadow(t_scene *scene, t_vector origin, t_vector dir, t_hit hit);
+t_color		color_init(unsigned int r, unsigned int g, unsigned int b);
 
 //hit.c
-t_hit	hit_init(void);
-t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);
+t_hit		hit_init(void);
+t_hit		hit_closest(t_scene *scene, t_vector origin, t_vector dir);
 
 //scene.c
-t_amblight amblight_init(double ratio, unsigned int r, unsigned int g, unsigned int b);
-t_light light_init(t_vector coord, double ratio);
-t_scene	scene_init(unsigned int nb_obj);
+t_amblight	amblight_init(double ratio, unsigned int r, unsigned int g, unsigned int b);
+t_light		light_init(t_vector coord, double ratio);
+t_scene		scene_init(unsigned int nb_obj);
 
 //plane.c
 // t_object	plane_init(int id, t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b);
-void	plane_init(int id, t_object *obj , t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b);
-t_hit	hit_plane(t_object obj, t_vector origin, t_vector dir);
+t_object	plane_init(int id, t_vector coord, t_vector dir, t_color color);
+t_hit		hit_plane(t_object obj, t_vector origin, t_vector dir);
 
 //cylinder.c
-void	cylinder_init(int id, t_object *obj, t_vector coord, t_vector dir, unsigned int r, unsigned int g, unsigned int b, double d, double h);
-t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir);
+t_cylinder_attr	cylinder_attr_init(t_vector dir, double d, double h);
+t_object	cylinder_init(int id, t_vector coord, t_cylinder_attr attr, t_color color);
+t_hit		hit_cylinder(t_object obj, t_vector origin, t_vector dir);
 
 #endif
