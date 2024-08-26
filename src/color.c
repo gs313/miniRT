@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:43:20 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 18:42:15 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 23:59:59 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 int32_t rgb_to_int (int32_t r, int32_t g, int32_t b)
 {
     return (r << 24 | g << 16 | b << 8 | 255);
+}
+
+int     is_shadow(t_scene *scene, t_vector origin, t_vector dir, t_hit hit)
+{
+    t_hit   shadow_hit;
+
+    dir = vec_scale(dir, -1.0f);
+    shadow_hit = hit_closest(scene, origin, dir);
+    if (shadow_hit.obj_id == hit.obj_id)
+        return (FALSE);
+    return (TRUE);
 }
 
 int32_t cal_color (t_hit hit, t_vector ori, t_vector dir, t_scene *scene)
@@ -42,7 +53,7 @@ int32_t cal_color (t_hit hit, t_vector ori, t_vector dir, t_scene *scene)
     dot = vec_dot(hit_light, hit_normal);
     if ((dot < 0.0f && scene->obj[hit.obj_id].type == PLANE) || (scene->obj[hit.obj_id].type == CYLINDER && hit.is_disk && vec_dot(vec_norm(scene->cam.dir), vec_norm(scene->obj[hit.obj_id].dir)) > 0.0f))
         dot = -dot;
-    if (dot < 0.0f)
+    if (dot < 0.0f || is_shadow(scene, scene->light.coord, hit_light, hit))
         dot = 0.0f;
     color.r = scene->obj[hit.obj_id].r * dot * scene->light.ratio + scene->amb.r * scene->amb.ratio;
     color.g = scene->obj[hit.obj_id].g * dot * scene->light.ratio + scene->amb.g * scene->amb.ratio;
