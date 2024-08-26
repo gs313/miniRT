@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:30:35 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/25 14:42:03 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 23:16:52 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	sphere_init(int id, t_object *obj, t_vector coord, unsigned int r, unsigned
 	obj->id = id;
 	obj->type = 1;
 	obj->coord = coord;
+	obj->coord.x = -coord.x;
+	obj->coord.y = -coord.y;
 	obj->r = r;
 	obj->g = g;
 	obj->b = b;

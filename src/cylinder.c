@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:48 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 18:27:52 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 23:18:17 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	cylinder_init(int id, t_object *obj, t_vector coord, t_vector dir, unsigned
 	obj->id = id;
 	obj->type = CYLINDER;
 	obj->coord = coord;
+	obj->coord.x = -coord.x;
+	obj->coord.y = -coord.y;
 	obj->dir = vec_norm(dir);
 	obj->r = r;
 	obj->g = g;
