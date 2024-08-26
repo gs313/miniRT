@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 03:15:46 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 03:56:05 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_cylinder_attr
 	t_vector	dir;
 	double		d;
 	double		h;
-	double		t;
 	double		t1;
 	double		t2;
 	double		t_cap;
@@ -160,5 +159,6 @@ t_cylinder_attr	cylinder_attr_init(t_vector dir, double d, double h);
 t_object		cylinder_init(int id, t_vector coord,
 					t_cylinder_attr attr, t_color color);
 t_hit			hit_cylinder(t_object obj, t_vector origin, t_vector dir);
+void	hit_cy_utils (t_cylinder_attr *attr, t_object obj, t_vector origin, t_hit *hit);
 
 #endif
