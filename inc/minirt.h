@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 01:26:23 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:43:41 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int32_t			cal_color(t_hit hit, t_scene *scene);
 int				is_shadow(t_scene *scene, t_vector origin,
 					t_vector dir, t_hit hit);
 t_color			color_init(unsigned int r, unsigned int g, unsigned int b);
+int32_t			cal_util1(t_scene *scene, double dot, t_hit hit, t_vector hit_light);
 
 //hit.c
 t_hit			hit_init(void);
