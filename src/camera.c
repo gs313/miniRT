@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 16:36:13 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:55:43 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		render (t_scene *scene)
 			pixel_loc = vec_add(pixel_loc, vec_scale(scene->view.delta_v, y));
 			ray_dir = vec_norm(vec_sub(pixel_loc, scene->cam.coord));
 			color = trace_ray(scene, scene->cam.coord, ray_dir);
-			printf ("pixel_loc: %f %f %f\n", pixel_loc.x, pixel_loc.y, pixel_loc.z);
+			// printf ("pixel_loc: %f %f %f\n", pixel_loc.x, pixel_loc.y, pixel_loc.z);
 			mlx_put_pixel(scene->img, x, y, color);
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 17:37:42 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:26:55 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_hit
 	int			obj_id;
 	t_vector	hitpoint;
 	double		distance;
+	int			is_disk;
 } t_hit;
 
 typedef struct s_scene
@@ -120,7 +121,7 @@ t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir);
 
 //scene.c
 t_amblight amblight_init(double ratio, unsigned int r, unsigned int g, unsigned int b);
-t_light light_init(t_vector coord, double ratio, unsigned int r, unsigned int g, unsigned int b);
+t_light light_init(t_vector coord, double ratio);
 t_scene	scene_init(unsigned int nb_obj);
 
 //plane.c

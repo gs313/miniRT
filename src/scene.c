@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:51:59 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 17:05:35 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:39:52 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ t_amblight amblight_init(double ratio, unsigned int r, unsigned int g, unsigned 
 	return (amb);
 }
 
-t_light light_init(t_vector coord, double ratio, unsigned int r, unsigned int g, unsigned int b)
+t_light light_init(t_vector coord, double ratio)
 {
 	t_light light;
 
 	light.coord = coord;
 	light.ratio = ratio;
-	light.r = r;
-	light.g = g;
-	light.b = b;
 	return (light);
 }
 
@@ -43,8 +40,7 @@ t_scene	scene_init(unsigned int nb_obj)
 	scene.obj = malloc(sizeof(t_object) * (nb_obj+1));
 	scene.obj_count = nb_obj;
 	scene.amb = amblight_init(0.5, 255, 255, 255);
-	scene.light = light_init(vec_init(0, 0, 0), 0.5, 255, 255, 255);
-	viewport_init(&scene);
+	scene.light = light_init(vec_init(0, 0, 0), 0.5);
 	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Tutorial Window", true);
 	scene.img = mlx_new_image(scene.mlx, WIN_WIDTH, WIN_HEIGHT);
 	return (scene);

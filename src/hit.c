@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:33:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 17:11:33 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:27:30 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_hit	hit_init(void)
 	hit.obj_id = -1;
 	hit.hitpoint = vec_init(0, 0, 0);
 	hit.distance = INFINITY;
+	hit.is_disk = FALSE;
 	return (hit);
 }
 

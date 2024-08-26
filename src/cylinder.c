@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:48 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 15:25:42 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:27:52 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 			hit.obj_id = obj.id;
 			hit.hitpoint = hitpoint;
 			hit.distance = t_cap;
+			hit.is_disk = TRUE;
 			return (hit);
 		}
 	}
@@ -95,6 +96,7 @@ t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 			hit.obj_id = obj.id;
 			hit.hitpoint = hitpoint;
 			hit.distance = t_cap;
+			hit.is_disk = TRUE;
 			return (hit);
 		}
 	}
