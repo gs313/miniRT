@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:34:23 by scharuka          #+#    #+#             */
-/*   Updated: 2022/08/20 08:09:22 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:54:11 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static size_t	word_length(char const *s, char c)
 {
@@ -19,8 +19,8 @@ static size_t	word_length(char const *s, char c)
 	l = 0;
 	while (*s && *s != c)
 	{
-			s++;
-			l++;
+		s++;
+		l++;
 	}
 	return (l);
 }

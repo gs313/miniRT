@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 23:11:42 by scharuka          #+#    #+#             */
-/*   Updated: 2022/08/20 10:56:14 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:54:28 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -28,7 +28,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 			dst[i] = src[i - start];
 			i++;
 		}
-			dst[i] = '\0';
+		dst[i] = '\0';
 	}
 	return (start + ft_strlen(src));
 }
