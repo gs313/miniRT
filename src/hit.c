@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:33:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 00:00:09 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:11:33 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir)
 	i = 0;
 	while (i < scene->obj_count)
 	{
-		if(scene->obj[i].type == SPHERE){
-			printf("im here\n");
+		if(scene->obj[i].type == SPHERE)
 			tmp = hit_sphere(scene->obj[i], origin, dir);
-		}
 		else if(scene->obj[i].type == PLANE)
 			tmp = hit_plane(scene->obj[i], origin, dir);
 		else if(scene->obj[i].type == CYLINDER)
@@ -44,6 +42,6 @@ t_hit	hit_closest(t_scene *scene, t_vector origin, t_vector dir)
 			hit = tmp;
 		i++;
 	}
-	printf("hit_id: %d hitpoint: %f %f %f distance: %f\n", hit.obj_id, hit.hitpoint.x, hit.hitpoint.y, hit.hitpoint.z, hit.distance);
+	// printf("hit_id: %d hitpoint: %f %f %f distance: %f\n", hit.obj_id, hit.hitpoint.x, hit.hitpoint.y, hit.hitpoint.z, hit.distance);
 	return (hit);
 }

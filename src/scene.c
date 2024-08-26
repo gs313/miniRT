@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:51:59 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/24 15:39:44 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:05:35 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ t_scene	scene_init(unsigned int nb_obj)
 	t_scene	scene;
 
 	scene.cam = camera_init(0,0,0, vec_init(0, 0, 1), 90);
-	scene.obj = malloc(sizeof(t_object) * nb_obj);
+	scene.obj = malloc(sizeof(t_object) * (nb_obj+1));
 	scene.obj_count = nb_obj;
-	scene.amb = amblight_init(0.1, 255, 255, 255);
+	scene.amb = amblight_init(0.5, 255, 255, 255);
 	scene.light = light_init(vec_init(0, 0, 0), 0.5, 255, 255, 255);
 	viewport_init(&scene);
 	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Tutorial Window", true);

@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:55 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/25 23:06:57 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 16:21:37 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	plane_init(int id, t_object *obj , t_vector coord, t_vector dir, unsigned i
 	obj->id = id;
 	obj->type = PLANE;
 	obj->coord = coord;
-	obj->dir = dir;
+	obj->dir = vec_norm(dir);
 	obj->r = r;
 	obj->g = g;
 	obj->b = b;
@@ -29,11 +29,11 @@ t_hit	hit_plane(t_object obj, t_vector origin, t_vector dir)
 	double	t;
 
 	hit = hit_init();
-	denom = vec_dot(obj.dir, dir);
-	if (denom > SMALL_NUM)
+	denom = vec_dot(vec_norm(obj.dir), vec_norm(dir));
+	if (fabs(denom) > SMALL_NUM)
 	{
 		t_vector p0l0 = vec_sub(obj.coord, origin);
-		t = vec_dot(p0l0, obj.dir) / denom;
+		t = vec_dot(p0l0, vec_norm(obj.dir)) / denom;
 		if (t >= 0.0f)
 		{
 			hit.obj_id = obj.id;

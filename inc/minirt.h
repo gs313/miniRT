@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/26 01:45:10 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:37:42 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ typedef struct s_color
 }	t_color;
 typedef	struct s_camera
 {
-	double			x;
-	double			y;
-	double			z;
 	t_vector		coord;
 	t_vector		dir;
 	unsigned int	dec;
@@ -71,9 +68,6 @@ typedef struct s_light
 {
 	t_vector		coord;
 	double			ratio;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
 }	t_light;
 
 typedef struct s_viewport
