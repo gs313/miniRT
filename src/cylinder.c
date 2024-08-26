@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:48 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 00:42:51 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 03:08:55 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_object	cylinder_init(int id, t_vector coord, t_cylinder_attr attr, t_color col
 
 t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 {
-	t_hit	hit;
+	t_hit		hit;
 	t_vector	oc;
 	double		a;
 	double		b;
@@ -84,7 +84,6 @@ t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 		}
 	}
 
-	// Check for intersection with the top cap
 	t_cap = (vec_dot(obj.dir, vec_sub(vec_add(obj.coord, vec_scale(obj.dir, obj.h)), origin))) / vec_dot(obj.dir, dir);
 	if (t_cap >= 0)
 	{
@@ -99,7 +98,6 @@ t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 		}
 	}
 
-	// Check for intersection with the bottom cap
 	t_cap = (vec_dot(obj.dir, vec_sub(obj.coord, origin))) / vec_dot(obj.dir, dir);
 	if (t_cap >= 0)
 	{
