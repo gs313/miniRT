@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:16:53 by scharuka          #+#    #+#             */
-/*   Updated: 2022/08/20 11:01:08 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:51:56 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static int	ft_isspace(const char c)
 {

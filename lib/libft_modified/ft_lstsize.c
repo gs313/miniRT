@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 00:00:11 by scharuka          #+#    #+#             */
-/*   Updated: 2022/08/20 00:05:01 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:53:04 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

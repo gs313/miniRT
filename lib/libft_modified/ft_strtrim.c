@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:59:37 by scharuka          #+#    #+#             */
-/*   Updated: 2022/08/20 08:01:42 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:54:42 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static size_t	check_set(char const *set, char const c)
 {
@@ -21,7 +21,7 @@ static size_t	check_set(char const *set, char const c)
 	{
 		if (c == set[i])
 			return (1);
-	i++;
+		i++;
 	}
 	return (0);
 }
