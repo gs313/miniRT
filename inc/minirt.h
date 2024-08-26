@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 02:43:41 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 03:15:46 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,16 @@ typedef struct s_scene
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 }	t_scene;
+
+typedef	struct s_quard
+{
+	double a;
+	double b;
+	double c;
+	double discr;
+	double t;
+}	t_quard;
+
 
 //camera.c
 t_camera		camera_init(t_vector coord, t_vector dir, unsigned int dec);

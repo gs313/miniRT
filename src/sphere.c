@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:30:35 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 01:11:30 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 03:17:27 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,25 @@ t_object	sphere_init(int id, t_vector coord, t_color color, double d)
 
 t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir)
 {
-	t_hit	hit;
-	t_vector oc;
-	double a;
-	double b;
-	double c;
-	double discr;
-	double t;
+	t_hit		hit;
+	t_vector	oc;
+	t_quard		quard;
 
 	hit = hit_init();
 	oc = vec_sub(origin, obj.coord);
-	a = vec_dot(dir, dir);
-	b = 2.0 * vec_dot(oc, dir);
-	c = vec_dot(oc, oc) - obj.d * obj.d;
-	discr = b * b - 4 * a * c;
-	if (discr < 0)
+	quard.a = vec_dot(dir, dir);
+	quard.b = 2.0 * vec_dot(oc, dir);
+	quard.c = vec_dot(oc, oc) - obj.d * obj.d;
+	quard.discr = quard.b * quard.b - 4 * quard.a * quard.c;
+	if (quard.discr < 0)
 		return (hit);
-	t = (-b - sqrt(discr)) / (2.0 * a);
-	if (t < 0)
-		t = (-b + sqrt(discr)) / (2.0 * a);
-	if (t < 0)
+	quard.t = (-quard.b - sqrt(quard.discr)) / (2.0 * quard.a);
+	if (quard.t < 0)
+		quard.t = (-quard.b + sqrt(quard.discr)) / (2.0 * quard.a);
+	if (quard.t < 0)
 		return (hit);
 	hit.obj_id = obj.id;
-	hit.hitpoint = vec_add(origin, vec_scale(dir, t));
-	hit.distance = t;
+	hit.hitpoint = vec_add(origin, vec_scale(dir, quard.t));
+	hit.distance = quard.t;
 	return (hit);
 }
