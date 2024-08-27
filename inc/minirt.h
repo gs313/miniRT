@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 03:56:05 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:50:30 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,15 +112,14 @@ typedef struct s_scene
 	mlx_image_t		*img;
 }	t_scene;
 
-typedef	struct s_quard
+typedef struct s_quard
 {
-	double a;
-	double b;
-	double c;
-	double discr;
-	double t;
+	double	a;
+	double	b;
+	double	c;
+	double	discr;
+	double	t;
 }	t_quard;
-
 
 //camera.c
 t_camera		camera_init(t_vector coord, t_vector dir, unsigned int dec);
@@ -138,11 +137,14 @@ int32_t			cal_color(t_hit hit, t_scene *scene);
 int				is_shadow(t_scene *scene, t_vector origin,
 					t_vector dir, t_hit hit);
 t_color			color_init(unsigned int r, unsigned int g, unsigned int b);
-int32_t			cal_util1(t_scene *scene, double dot, t_hit hit, t_vector hit_light);
+int32_t			cal_util1(t_scene *scene, double dot, t_hit hit,
+					t_vector hit_light);
 
 //hit.c
 t_hit			hit_init(void);
 t_hit			hit_closest(t_scene *scene, t_vector origin, t_vector dir);
+t_hit			set_hit(t_object obj, t_vector hitpoint,
+					double distance, int is_disk);
 
 //scene.c
 t_amblight		amblight_init(double ratio, unsigned int r, unsigned int g,
@@ -159,6 +161,11 @@ t_cylinder_attr	cylinder_attr_init(t_vector dir, double d, double h);
 t_object		cylinder_init(int id, t_vector coord,
 					t_cylinder_attr attr, t_color color);
 t_hit			hit_cylinder(t_object obj, t_vector origin, t_vector dir);
-void	hit_cy_utils (t_cylinder_attr *attr, t_object obj, t_vector origin, t_hit *hit);
+t_hit			hit_cap(t_object obj, t_vector origin, t_vector dir, double t);
+
+//util.c
+double			ft_min(double a, double b);
+double			ft_max(double a, double b);
+t_quard			set_quard(t_object obj, t_vector origin, t_vector dir);
 
 #endif

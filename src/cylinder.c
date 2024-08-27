@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:48 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 04:08:24 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:48:02 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_cylinder_attr	cylinder_attr_init(t_vector dir, double d, double h)
 	return (attr);
 }
 
-t_object	cylinder_init(int id, t_vector coord, t_cylinder_attr attr, t_color color)
+t_object	cylinder_init(int id, t_vector coord,
+					t_cylinder_attr attr, t_color color)
 {
 	t_object	obj;
 
@@ -40,70 +41,53 @@ t_object	cylinder_init(int id, t_vector coord, t_cylinder_attr attr, t_color col
 	return (obj);
 }
 
-t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
+t_hit	hit_cap(t_object obj, t_vector origin, t_vector dir, double t)
 {
 	t_hit		hit;
-	t_vector	oc;
-	t_quard		quard;
+	t_vector	hitpoint;
+
+	hit = hit_init();
+	hitpoint = vec_add(origin, vec_scale(dir, t));
+	if (vec_len(vec_sub(hitpoint, obj.coord)) <= obj.d)
+		return (set_hit(obj, hitpoint, t, TRUE));
+	return (hit);
+}
+
+t_cylinder_attr	set_cy_attr(t_object obj, t_vector origin,
+					t_vector dir, t_quard quard)
+{
+	t_cylinder_attr	attr;
+
+	attr.dir = vec_norm(obj.dir);
+	attr.t2 = (-quard.b + sqrt(quard.discr)) / (2.0 * quard.a);
+	attr.t1 = (-quard.b - sqrt(quard.discr)) / (2.0 * quard.a);
+	return (attr);
+}
+
+t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
+{
+	t_hit			hit;
+	t_quard			quard;
 	t_cylinder_attr	attr;
 
 	hit = hit_init();
-	oc = vec_sub(origin, obj.coord);
-	attr.dir = vec_norm(obj.dir);
-	quard.a = vec_dot(dir, dir) - pow(vec_dot(dir, obj.dir), 2);
-	quard.b = 2 * (vec_dot(dir, oc) - vec_dot(dir, obj.dir) * vec_dot(oc, obj.dir));
-	quard.c = vec_dot(oc, oc) - pow(vec_dot(oc, obj.dir), 2) - obj.d * obj.d;
-	quard.discr = quard.b * quard.b - 4 * quard.a * quard.c;
+	quard = set_quard(obj, origin, dir);
+	attr = set_cy_attr(obj, origin, dir, quard);
 	if (quard.discr >= 0)
 	{
-		attr.t1 = (-quard.b - sqrt(quard.discr)) / (2.0 * quard.a);
-		attr.t2 = (-quard.b + sqrt(quard.discr)) / (2.0 * quard.a);
 		if (attr.t1 >= 0 || attr.t2 >= 0)
 		{
-			quard.t = (attr.t1 < attr.t2) ? attr.t1 : attr.t2;
+			quard.t = ft_min(attr.t1, attr.t2);
 			if (quard.t < 0)
-				quard.t = (attr.t1 > attr.t2) ? attr.t1 : attr.t2;
-			if (quard.t >= 0)
-			{
-				attr.hitpoint = vec_add(origin, vec_scale(dir, quard.t));
-				double hit_height = vec_dot(vec_sub(attr.hitpoint, obj.coord), obj.dir);
-				if (hit_height >= 0 && hit_height <= obj.h)
-				{
-					hit.obj_id = obj.id;
-					hit.hitpoint = attr.hitpoint;
-					hit.distance = quard.t;
-					return (hit);
-				}
-			}
+				quard.t = ft_max(attr.t1, attr.t2);
+			attr.hitpoint = vec_add(origin, vec_scale(dir, quard.t));
+			attr.hit_height = vec_dot(vec_sub(attr.hitpoint,
+						obj.coord), obj.dir);
+			if (attr.hit_height >= 0 && attr.hit_height <= obj.h)
+				return (set_hit(obj, attr.hitpoint, quard.t, FALSE));
 		}
 	}
-
-	attr.t_cap = (vec_dot(obj.dir, vec_sub(vec_add(obj.coord, vec_scale(obj.dir, obj.h)), origin))) / vec_dot(obj.dir, dir);
-	if (attr.t_cap >= 0)
-	{
-		attr.hitpoint = vec_add(origin, vec_scale(dir, attr.t_cap));
-		if (vec_len(vec_sub(attr.hitpoint, vec_add(obj.coord, vec_scale(obj.dir, obj.h)))) <= obj.d)
-		{
-			hit.obj_id = obj.id;
-			hit.hitpoint = attr.hitpoint;
-			hit.distance = attr.t_cap;
-			hit.is_disk = TRUE;
-			return (hit);
-		}
-	}
-
-	attr.t_cap = (vec_dot(obj.dir, vec_sub(obj.coord, origin))) / vec_dot(obj.dir, dir);
-	if (attr.t_cap >= 0)
-	{
-		attr.hitpoint = vec_add(origin, vec_scale(dir, attr.t_cap));
-		if (vec_len(vec_sub(attr.hitpoint, obj.coord)) <= obj.d)
-		{
-			hit.obj_id = obj.id;
-			hit.hitpoint = attr.hitpoint;
-			hit.distance = attr.t_cap;
-			hit.is_disk = TRUE;
-			return (hit);
-		}
-	}
+	hit = hit_cap(obj, origin, dir, (vec_dot(obj.dir,
+					vec_sub(obj.coord, origin))) / vec_dot(obj.dir, dir));
 	return (hit);
 }

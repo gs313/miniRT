@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:33:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 03:09:29 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:17:36 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ t_hit	hit_init(void)
 	hit.hitpoint = vec_init(0, 0, 0);
 	hit.distance = INFINITY;
 	hit.is_disk = FALSE;
+	return (hit);
+}
+
+t_hit	set_hit(t_object obj, t_vector hitpoint, double distance, int is_disk)
+{
+	t_hit	hit;
+
+	hit.obj_id = obj.id;
+	hit.hitpoint = hitpoint;
+	hit.distance = distance;
+	hit.is_disk = is_disk;
 	return (hit);
 }
 
