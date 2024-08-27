@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:55 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 00:54:04 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 03:10:58 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ t_object	plane_init(int id, t_vector coord, t_vector dir, t_color color)
 
 t_hit	hit_plane(t_object obj, t_vector origin, t_vector dir)
 {
-	t_hit	hit;
-	double	denom;
-	double	t;
+	t_hit		hit;
+	double		denom;
+	double		t;
+	t_vector	p0l0;
 
 	hit = hit_init();
 	denom = vec_dot(vec_norm(obj.dir), vec_norm(dir));
 	if (fabs(denom) > SMALL_NUM)
 	{
-		t_vector p0l0 = vec_sub(obj.coord, origin);
+		p0l0 = vec_sub(obj.coord, origin);
 		t = vec_dot(p0l0, vec_norm(obj.dir)) / denom;
 		if (t >= 0.0f)
 		{
