@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_product.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:47:03 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/16 10:57:40 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/27 02:50:28 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vector	vec_cross(t_vector a, t_vector b)
 	return (res);
 }
 
-double		vec_dot(t_vector a, t_vector b)
+double	vec_dot(t_vector a, t_vector b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
