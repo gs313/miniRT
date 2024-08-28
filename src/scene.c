@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:51:59 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 03:12:17 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/29 00:16:38 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ t_scene	scene_init(unsigned int nb_obj)
 
 	scene.cam = camera_init(vec_init(0, 0, 0), vec_init(0, 0, 1), 90);
 	scene.obj = malloc(sizeof(t_object) * (nb_obj + 1));
-	scene.obj_count = nb_obj;
+	//scene.obj_count = nb_obj;
+	scene.obj_count = 0;
 	scene.amb = amblight_init(0.5, 255, 255, 255);
 	scene.light = light_init(vec_init(0, 0, 0), 0.5);
-	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Tutorial Window", true);
+	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "====<< MiniRT >>====", true);	
 	scene.img = mlx_new_image(scene.mlx, WIN_WIDTH, WIN_HEIGHT);
 	return (scene);
 }

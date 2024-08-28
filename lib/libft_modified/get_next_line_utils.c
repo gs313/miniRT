@@ -3,53 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 15:12:35 by scharuka          #+#    #+#             */
-/*   Updated: 2023/09/05 14:59:43 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/28 20:52:55 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t	i;
+// void	*ft_memcpy(void *dst, const void *src, size_t n)
+// {
+// 	size_t	i;
 
-	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		((char *)dst)[i] = ((char *)src)[i];
-		i++;
-	}
-	return (dst);
-}
+// 	i = 0;
+// 	if (dst == NULL && src == NULL)
+// 		return (NULL);
+// 	while (i < n)
+// 	{
+// 		((char *)dst)[i] = ((char *)src)[i];
+// 		i++;
+// 	}
+// 	return (dst);
+// }
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	len;
+// size_t	ft_strlen(const char *s)
+// {
+// 	size_t	len;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
+// 	len = 0;
+// 	while (s[len] != '\0')
+// 		len++;
+// 	return (len);
+// }
 
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
+// char	*ft_strchr(const char *s, int c)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (i <= ft_strlen(s))
+// 	{
+// 		if (s[i] == (char)c)
+// 			return ((char *)s + i);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 char	*ft_strjoin_f(char *s1, char *s2)
 {

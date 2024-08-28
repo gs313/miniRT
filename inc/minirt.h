@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 10:50:30 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:01:12 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,24 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include "../lib/libvec/vector.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h" // MLX42 library header
+# include "../lib/libft_modified/libft.h"
+# include "../lib/libft_modified/get_next_line.h"
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 600
-# define SPHERE 1
-# define PLANE 2
-# define CYLINDER 3
+// # define WIN_WIDTH 1920
+// # define WIN_HEIGHT 1080
+// # define SPHERE 1
+// # define PLANE 2
+// # define CYLINDER 3
+#define SPHERE "sp"
+# define PLANE "pl"
+# define CYLINDER "cy"
+# define LIGHT "L"
+# define AMBIENT_LIGHT "A"
+# define CAMERA "C"
 # define TRUE 1
 # define FALSE 0
 # define SMALL_NUM 0.00000001f
@@ -59,7 +70,8 @@ typedef struct s_cylinder_attr
 typedef struct s_object
 {
 	int				id;
-	unsigned int	type;
+	//unsigned int	type;
+	char			*type;
 	t_vector		coord;
 	t_vector		dir;
 	unsigned int	r;
@@ -167,5 +179,16 @@ t_hit			hit_cap(t_object obj, t_vector origin, t_vector dir, double t);
 double			ft_min(double a, double b);
 double			ft_max(double a, double b);
 t_quard			set_quard(t_object obj, t_vector origin, t_vector dir);
+void			ft_free_split(char **split);
+
+//parser.c
+void			parse_rt_file(t_scene *scene, const char *filename);
+void			parse_line(t_scene *scene, char *line);
+void			parse_ambient(t_scene *scene, char **tokens);
+void			parse_camera(t_scene *scene, char **tokens);
+void			parse_light(t_scene *scene, char **tokens);
+void			parse_sphere(t_scene *scene, char **tokens);
+void			parse_plane(t_scene *scene, char **tokens);
+void			parse_cylinder(t_scene *scene, char **tokens);
 
 #endif
