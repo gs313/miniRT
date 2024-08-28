@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 09:51:38 by sicharuk          #+#    #+#             */
-/*   Updated: 2024/08/28 17:04:15 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 03:34:38 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdbool.h>
 
 # ifndef OPEN_MAX
 #  define OPEN_MAX 256
@@ -51,6 +52,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 double	ft_atof(const char *str);
+bool	ft_isspace(const char c);
 
 /* malloc allowed zone*/
 void	*ft_calloc(size_t count, size_t size);

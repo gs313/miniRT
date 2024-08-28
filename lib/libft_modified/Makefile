@@ -6,7 +6,7 @@
 #    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/31 21:47:41 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/28 17:11:51 by ookamonu         ###   ########.fr        #
+#    Updated: 2024/08/29 03:27:12 by ookamonu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS =  ft_isdigit.c\
 		ft_split.c\
 		ft_strlen.c\
 		ft_atof.c \
+		ft_isspace.c \
 		ft_tolower.c\
 			ft_atoi.c         ft_isprint.c      ft_memmove.c      ft_strchr.c       ft_strmapi.c      ft_toupper.c \
 			ft_bzero.c        ft_itoa.c       ft_memset.c       ft_strdup.c       ft_strncmp.c \

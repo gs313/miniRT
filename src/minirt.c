@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 01:53:42 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 02:57:17 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 03:26:24 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ unsigned int	count_objs(const char *filename)
 	return (count);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{

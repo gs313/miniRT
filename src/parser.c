@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/08/29 02:50:13 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 03:23:45 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,9 @@ void	parse_sphere(t_scene *scene, char **tokens)
 	t_color color = color_init(ft_atoi(colors[0]), ft_atoi(colors[1]),
 					ft_atoi(colors[2]));
 	ft_free_split(colors);
-	scene->obj[scene->obj_count++] = sphere_init(scene->obj_count, coord,
+	scene->obj[scene->obj_count] = sphere_init(scene->obj_count, coord,
 									color, diameter);
+	scene->obj_count++;
 	printf("Parsed Sphere: coord=(%f, %f, %f), diameter=%f, color=(%d, %d, %d)\n",
 		coord.x, coord.y, coord.z, diameter, color.r, color.g, color.b);
 }
@@ -126,8 +127,9 @@ void	parse_plane(t_scene *scene, char **tokens)
 	t_color color = color_init(ft_atoi(colors[0]), ft_atoi(colors[1]),
 					ft_atoi(colors[2]));
 	ft_free_split(colors);
-	scene->obj[scene->obj_count++] = plane_init(scene->obj_count, coord,
+	scene->obj[scene->obj_count] = plane_init(scene->obj_count, coord,
 									direction, color);
+	scene->obj_count++;
 	printf("Parsed Plane: coord=(%f, %f, %f), direction=(%f, %f, %f), color=(%d, %d, %d)\n",
 		coord.x, coord.y, coord.z, direction.x, direction.y, direction.z, color.r, color.g, color.b);
 }
@@ -151,17 +153,12 @@ void	parse_cylinder(t_scene *scene, char **tokens)
 	t_color color = color_init(ft_atoi(colors[0]), ft_atoi(colors[1]),
 					ft_atoi(colors[2]));
 	ft_free_split(colors);
-	scene->obj[scene->obj_count++] = cylinder_init(scene->obj_count, coord,
+	scene->obj[scene->obj_count] = cylinder_init(scene->obj_count, coord,
 					cylinder_attr_init(direction, diameter, height), color);
-
+	scene->obj_count++;
 	printf("Parsed Cylinder: coord=(%f, %f, %f), direction=(%f, %f, %f), diameter=%f, height=%f, color=(%d, %d, %d)\n",
 		coord.x, coord.y, coord.z, direction.x, direction.y, direction.z, diameter, height, color.r, color.g, color.b);
 
-}
-
-bool	ft_isspace(char c)
-{
-    return (c == ' ' || c == '\t' || c == '\n');
 }
 
 void	parse_line(t_scene *scene, char *line)

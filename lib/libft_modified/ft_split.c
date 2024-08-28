@@ -84,14 +84,6 @@
 // }
 
 
-# include <unistd.h>
-# include <stdlib.h>
-
-int	ft_isspace(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n');
-}
-
 char	**ft_split(char const *str, char c)
 {
 	int		i = 0, j = 0, k = 0;
