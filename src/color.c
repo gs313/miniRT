@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:43:20 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 02:28:05 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 06:06:25 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int32_t	cal_color(t_hit hit, t_scene *scene)
 }
 
 int32_t	cal_util1(t_scene *scene, double dot, t_hit hit, t_vector hit_light)
-
 {
 	t_color	color;
 

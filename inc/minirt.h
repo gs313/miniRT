@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 03:30:47 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 05:43:05 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 // # define SPHERE 1
 // # define PLANE 2
 // # define CYLINDER 3
-#define SPHERE "sp"
+# define SPHERE "sp"
 # define PLANE "pl"
 # define CYLINDER "cy"
 # define LIGHT "L"
