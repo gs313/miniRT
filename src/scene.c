@@ -38,12 +38,11 @@ t_scene	scene_init(unsigned int nb_obj)
 	t_scene	scene;
 
 	scene.cam = camera_init(vec_init(0, 0, 0), vec_init(0, 0, 1), 90);
-	scene.obj = malloc(sizeof(t_object) * (nb_obj + 1));
-	//scene.obj_count = nb_obj;
+	scene.obj = malloc(sizeof(t_object) * (scene.obj_count + 1));
 	scene.obj_count = 0;
 	scene.amb = amblight_init(0.5, 255, 255, 255);
 	scene.light = light_init(vec_init(0, 0, 0), 0.5);
-	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "====<< MiniRT >>====", true);	
+	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "====<< MiniRT >>====", true);
 	scene.img = mlx_new_image(scene.mlx, WIN_WIDTH, WIN_HEIGHT);
 	return (scene);
 }

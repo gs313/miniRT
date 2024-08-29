@@ -23,13 +23,18 @@ void	parse_rt_file(t_scene *scene, const char *filename)
 		perror("Error opening file");
 		exit(EXIT_FAILURE);
 	}
-	while (1)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		line = get_next_line(fd);
-		if (line == NULL || fd < 0)
-			break ;
+		if (line[0] == '\0' || line[0] == '#' || ft_isspace(line[0]))
+		{
+			free(line);
+			line = get_next_line(fd);
+			continue ;
+		}
 		parse_line(scene, line);
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 }

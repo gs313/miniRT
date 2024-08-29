@@ -178,6 +178,7 @@ t_hit			hit_cap(t_object obj, t_vector origin, t_vector dir, double t);
 double			ft_min(double a, double b);
 double			ft_max(double a, double b);
 t_quard			set_quard(t_object obj, t_vector origin, t_vector dir);
+unsigned int	count_objs(int fd);
 void			ft_free_split(char **split);
 
 //parser.c

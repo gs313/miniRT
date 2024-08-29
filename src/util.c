@@ -42,10 +42,11 @@ t_quard	set_quard(t_object obj, t_vector origin, t_vector dir)
 
 void	ft_free_split(char **split)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	if (!split)
-		return;
+		return ;
 	while (split[i])
 	{
 		free(split[i]);

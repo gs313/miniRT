@@ -15,11 +15,69 @@
 void	hook(void *param)	// for key press events (ESC and Q key)
 {
 	mlx_t	*mlx;
+
 	mlx = param;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE) || mlx_is_key_down(mlx, MLX_KEY_Q))
 	{
 		mlx_close_window(mlx);
 	}
+}
+
+bool	is_object(const char *token)
+{
+	return (ft_strncmp(token, "sp", 2) == 0
+		|| ft_strncmp(token, "pl", 2) == 0
+		|| ft_strncmp(token, "cy", 2) == 0);
+}
+
+unsigned int	count_objs(int fd)
+{
+	char			*line;
+	unsigned int	count;
+
+	count = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		if (line[0] == '\0' || line[0] == '#' || ft_isspace(line[0]))
+		{
+			free(line);
+			line = get_next_line(fd);
+			continue ;
+		}
+		if (is_object(line))
+			count++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (count);
+}
+
+int	main(int argc, char **argv)
+{
+	t_scene			scene;
+	int				fd;
+
+	if (argc != 2)
+	{
+		printf("Usage: %s <scene.rt>\n", argv[0]);
+		return (1);
+	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error opening file");
+		exit(EXIT_FAILURE);
+	}
+	scene = scene_init(count_objs(fd));
+	parse_rt_file(&scene, argv[1]);
+	render(&scene);
+	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
+	mlx_loop_hook(scene.mlx, hook, scene.mlx);
+	mlx_loop(scene.mlx);
+	mlx_terminate(scene.mlx);
+	return (0);
 }
 
 // int	main(void)
@@ -31,63 +89,19 @@ void	hook(void *param)	// for key press events (ESC and Q key)
 // 	t_scene	scene;
 // 	// scene = scene_init(1);
 // 	scene = scene_init(3);
-// 	scene.obj[0] = cylinder_init(0, vec_init(0, 10, 50), cylinder_attr_init(vec_init(1, 1, 1), 10, 20), color_init(255, 0, 0));
-// 	scene.obj[1] = plane_init(1, vec_init(0, 5, 0), vec_init(0, 1, 0), color_init(0, 255, 0));
+// 	scene.obj[0] = cylinder_init(0, vec_init(0, 10, 50),
+//		cylinder_attr_init(vec_init(1, 1, 1), 10, 20), color_init(255, 0, 0));
+// 	scene.obj[1] = plane_init(1, vec_init(0, 5, 0), vec_init(0, 1, 0),
+//			color_init(0, 255, 0));
 // 	scene.obj[2] = sphere_init(2, vec_init(0, 0, 30), color_init(0, 0, 255), 5);
 // 	scene.light = light_init(vec_init(0,-5,0), 0.6);
 // 	scene.amb = amblight_init(0.2, 255, 255, 255);
 // 	scene.cam = camera_init(vec_init(0,0,0), vec_init(0, 0, 1), 100);
 // 	render(&scene);
 // 	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
-// 	// mlx_loop_hook(scene.mlx, (void*)render, &scene); 	// hook function for key press events
-// 	mlx_loop_hook(scene.mlx, hook, scene.mlx); 	// hook function for key press events
+// 	// mlx_loop_hook(scene.mlx, (void*)render, &scene); // for key press events
+// 	mlx_loop_hook(scene.mlx, hook, scene.mlx);// hook func for key press events
 // 	mlx_loop(scene.mlx);
 // 	mlx_terminate(scene.mlx);
 // 	return (0);
 // }
-
-unsigned int	count_objs(const char *filename)
-{
-	int fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		exit(EXIT_FAILURE);
-	}
-	unsigned int count = 0;
-	char *line;
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		char **tokens = ft_split(line, ' ');
-		if (tokens[0] != NULL && ft_strlen(tokens[0]) > 0)
-		{
-			if (ft_strncmp(tokens[0], "sp", 2) == 0 ||
-				ft_strncmp(tokens[0], "pl", 2) == 0 ||
-				ft_strncmp(tokens[0], "cy", 2) == 0)
-				count++;
-		}
-		ft_free_split(tokens);
-		free(line);
-	}
-	close(fd);
-	return (count);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Usage: %s <scene.rt>\n", argv[0]);
-		return (1);
-	}
-	
-	t_scene scene = scene_init(count_objs(argv[1]));
-	parse_rt_file(&scene, argv[1]);
-
-	render(&scene);
-	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
-	mlx_loop_hook(scene.mlx, hook, scene.mlx);
-	mlx_loop(scene.mlx);
-	mlx_terminate(scene.mlx);
-	return (0);
-}
