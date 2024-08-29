@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 01:53:42 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 03:26:24 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:28:11 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ unsigned int	count_objs(const char *filename)
 		char **tokens = ft_split(line, ' ');
 		if (tokens[0] != NULL && ft_strlen(tokens[0]) > 0)
 		{
-			if (ft_strncmp(tokens[0], SPHERE, 2) == 0 ||
-				ft_strncmp(tokens[0], PLANE, 2) == 0 ||
-				ft_strncmp(tokens[0], CYLINDER, 2) == 0)
+			if (ft_strncmp(tokens[0], "sp", 2) == 0 ||
+				ft_strncmp(tokens[0], "pl", 2) == 0 ||
+				ft_strncmp(tokens[0], "cy", 2) == 0)
 				count++;
 		}
 		ft_free_split(tokens);

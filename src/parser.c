@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/08/29 06:03:12 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:34:38 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	parse_ambient(t_scene *scene, char **tokens)
 	// scene->amb.b = ft_atoi(colors[2]);
 	ft_free_split(colors);
 
-	printf("Parsed ambient light: intensity=%f, color=(%d, %d, %d)\n",
+	printf("Parsed Ambient light: intensity=%f, color=(%d, %d, %d)\n",
 				scene->amb.ratio, scene->amb.r, scene->amb.g, scene->amb.b);
 }
 
@@ -67,7 +67,8 @@ void	parse_camera(t_scene *scene, char **tokens)
 	// ft_free_split(dir);
 	// scene->cam.dec = ft_atoi(tokens[3]);
 	printf("Parsed Camera: coord=(%f, %f, %f), direction=(%f, %f, %f), fov=%d\n",
-		coord.x, coord.y, coord.z, direction.x, direction.y, direction.z , ft_atoi(tokens[3]));
+			coord.x, coord.y, coord.z, direction.x, direction.y, direction.z ,
+			ft_atoi(tokens[3]));
 }
 
 // parse light
@@ -171,22 +172,23 @@ void	parse_line(t_scene *scene, char *line)
 	char **tokens = ft_split(line, ' ');
 	if (tokens == NULL)
 	{
+		free(tokens);
 		printf("Error: ft_split returned NULL\n");
 		return;
 	}
 	
-	printf("Parsing token: %s\n", tokens[0]);
-	if (ft_strncmp(tokens[0], AMBIENT_LIGHT, 1) == 0)
+	printf("\nParsing token: %s\n", tokens[0]);
+	if (ft_strncmp(tokens[0], "A", 1) == 0)
 		parse_ambient(scene, tokens);
-	else if (ft_strncmp(tokens[0], CAMERA, 1) == 0)
+	else if (ft_strncmp(tokens[0], "C", 1) == 0)
 		parse_camera(scene, tokens);
-	else if (ft_strncmp(tokens[0], LIGHT, 1) == 0)
+	else if (ft_strncmp(tokens[0], "L", 1) == 0)
 		parse_light(scene, tokens);
-	else if (ft_strncmp(tokens[0], SPHERE, 2) == 0)
+	else if (ft_strncmp(tokens[0], "sp", 2) == 0)
 		parse_sphere(scene, tokens);
-	else if (ft_strncmp(tokens[0], PLANE, 2) == 0)
+	else if (ft_strncmp(tokens[0], "pl", 2) == 0)
 		parse_plane(scene, tokens);
-	else if (ft_strncmp(tokens[0], CYLINDER, 2) == 0)
+	else if (ft_strncmp(tokens[0], "cy", 2) == 0)
 		parse_cylinder(scene, tokens);
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 05:43:05 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:22:38 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # define WIN_HEIGHT 600
 // # define WIN_WIDTH 1920
 // # define WIN_HEIGHT 1080
-// # define SPHERE 1
-// # define PLANE 2
-// # define CYLINDER 3
-# define SPHERE "sp"
-# define PLANE "pl"
-# define CYLINDER "cy"
+# define SPHERE 1
+# define PLANE 2
+# define CYLINDER 3
+// # define SPHERE "sp"
+// # define PLANE "pl"
+// # define CYLINDER "cy"
 # define LIGHT "L"
 # define AMBIENT_LIGHT "A"
 # define CAMERA "C"
@@ -70,8 +70,8 @@ typedef struct s_cylinder_attr
 typedef struct s_object
 {
 	int				id;
-	//unsigned int	type;
-	char			*type;
+	unsigned int	type;
+	//char			*type;
 	t_vector		coord;
 	t_vector		dir;
 	unsigned int	r;
