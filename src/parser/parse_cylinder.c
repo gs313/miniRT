@@ -22,7 +22,7 @@ void	parse_cylinder(t_scene *scene, char **tokens)
 
 	printf("Debug: tokens[0]=%s, tokens[1]=%s, tokens[2]=%s, tokens[3]=%s, ",
 		tokens[0], tokens[1], tokens[2], tokens[3]);
-	printf("tokens[4]=%s, tokens[5]=%s\n", tokens[4], tokens[5]);
+	printf("tokens[4]=%s, tokens[5]=%s\n", tokens[4], tokens[5]);   
 	coord = parse_vector(tokens[1]);
 	direction = parse_vector(tokens[2]);
 	diameter = ft_atof(tokens[3]);

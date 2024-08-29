@@ -1,16 +1,57 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   ft_split.c                                         :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2022/08/12 16:34:23 by scharuka          #+#    #+#             */
-// /*   Updated: 2024/08/28 22:20:48 by ookamonu         ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/12 16:34:23 by scharuka          #+#    #+#             */
+/*   Updated: 2024/08/28 22:20:48 by ookamonu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
+
+char	**ft_split(char const *str, char c)
+{
+	int		i = 0, j = 0, k = 0;
+	char	*word;
+	char	**splitted;
+	
+	if (!str)
+		return (NULL);
+
+	splitted = malloc(sizeof(char *) * 5000);
+	if (!splitted)
+		return (NULL);
+
+	while (str[i] != '\0')
+	{
+		while (ft_isspace(str[i]) || str[i] == c)
+			i++;
+		if (!str[i])
+			break;
+
+		word = malloc(sizeof(char) * 1000);
+		if (!word)
+		{
+			for (int l = 0; l < k; l++)
+				free(splitted[l]);
+			free(splitted);
+			return (NULL);
+		}
+		while (str[i] && !(ft_isspace(str[i]) || str[i] == c))
+		{
+			word[j++] = str[i++];
+		}
+		word[j] = '\0';
+		j = 0;
+		splitted[k++] = word;
+	}
+	splitted[k] = NULL;
+	return (splitted);
+}
+
 
 // static size_t	word_length(char const *s, char c)
 // {
@@ -82,44 +123,3 @@
 // 	ans[wc] = NULL;
 // 	return (ans);
 // }
-
-
-char	**ft_split(char const *str, char c)
-{
-	int		i = 0, j = 0, k = 0;
-	char	*word;
-	char	**splitted;
-	
-	if (!str)
-		return (NULL);
-
-	splitted = malloc(sizeof(char *) * 5000);
-	if (!splitted)
-		return (NULL);
-
-	while (str[i] != '\0')
-	{
-		while (ft_isspace(str[i]) || str[i] == c)
-			i++;
-		if (!str[i])
-			break;
-
-		word = malloc(sizeof(char) * 1000);
-		if (!word)
-		{
-			for (int l = 0; l < k; l++)
-				free(splitted[l]);
-			free(splitted);
-			return (NULL);
-		}
-		while (str[i] && !(ft_isspace(str[i]) || str[i] == c))
-		{
-			word[j++] = str[i++];
-		}
-		word[j] = '\0';
-		j = 0;
-		splitted[k++] = word;
-	}
-	splitted[k] = NULL;
-	return (splitted);
-}
