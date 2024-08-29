@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/08/29 18:14:39 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:21:12 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	parse_line(t_scene *scene, char *line)
 		parse_cylinder(scene, tokens);
 	else
 	{
-		printf("\nError: No oject found Or Unrecognized object type '%s' \n", tokens[0]);
+		printf("\nError: Unrecognized object type '%s' OR None found\n",
+				tokens[0]);
 		// ft_free_split(tokens);
 		// exit(EXIT_FAILURE);
 	}
