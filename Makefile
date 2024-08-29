@@ -14,7 +14,8 @@ NAME = miniRT
 
 SRC_DIR = src/
 FILES = minirt.c sphere.c camera.c hit.c color.c scene.c plane.c cylinder.c util.c \
-		parser/parse_file.c parser/parse_cam.c parser/parse_objs.c parser/parse_lights.c
+		parser/parse_file.c parser/parse_cam.c parser/parse_lights.c parser/parse_sphere.c \
+		parser/parse_plane.c parser/parse_cylinder.c parser/parse_vec_n_color.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc

@@ -20,10 +20,10 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h" // MLX42 library header
 # include "../lib/libft_modified/libft.h"
 # include "../lib/libft_modified/get_next_line.h"
-# define WIN_WIDTH 900
-# define WIN_HEIGHT 600
-// # define WIN_WIDTH 1920
-// # define WIN_HEIGHT 1080
+// # define WIN_WIDTH 900
+// # define WIN_HEIGHT 600
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
@@ -71,7 +71,6 @@ typedef struct s_object
 {
 	int				id;
 	unsigned int	type;
-	//char			*type;
 	t_vector		coord;
 	t_vector		dir;
 	unsigned int	r;
@@ -184,11 +183,15 @@ void			ft_free_split(char **split);
 //parser.c
 void			parse_rt_file(t_scene *scene, const char *filename);
 void			parse_line(t_scene *scene, char *line);
+void			parse_token(t_scene *scene, char **tokens);
 void			parse_ambient(t_scene *scene, char **tokens);
 void			parse_camera(t_scene *scene, char **tokens);
 void			parse_light(t_scene *scene, char **tokens);
 void			parse_sphere(t_scene *scene, char **tokens);
 void			parse_plane(t_scene *scene, char **tokens);
 void			parse_cylinder(t_scene *scene, char **tokens);
+t_vector		parse_vector(char *token);
+t_color			parse_color(char *token);
+
 
 #endif
