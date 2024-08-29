@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/08/29 16:34:38 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:00:45 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	parse_ambient(t_scene *scene, char **tokens)
 {
 	printf("Debug: tokens[0]=%s, tokens[1]=%s, tokens[2]=%s\n", tokens[0],
 			tokens[1], tokens[2]);
-
 	if (tokens[1] == NULL || tokens[2] == NULL)
 	{
 		printf("Error: Ambient light intensity or color is NULL\n");
@@ -33,11 +32,6 @@ void	parse_ambient(t_scene *scene, char **tokens)
 	}
 	scene->amb = amblight_init(ft_atof(tokens[1]), ft_atoi(colors[0]),
 				ft_atoi(colors[1]), ft_atoi(colors[2]));
-	// scene->amb.ratio = ft_atof(tokens[1]);
-	// char **colors = ft_split(tokens[2], ',');
-	// scene->amb.r = ft_atoi(colors[0]);
-	// scene->amb.g = ft_atoi(colors[1]);
-	// scene->amb.b = ft_atoi(colors[2]);
 	ft_free_split(colors);
 
 	printf("Parsed Ambient light: intensity=%f, color=(%d, %d, %d)\n",
@@ -59,13 +53,6 @@ void	parse_camera(t_scene *scene, char **tokens)
 							ft_atof(dir[2]));
 	ft_free_split(dir);
 	scene->cam = camera_init(coord, direction, ft_atoi(tokens[3]));
-	// char **coords = ft_split(tokens[1], ',');
-	// scene->cam.coord = vec_init(ft_atof(coords[0]), ft_atof(coords[1]), ft_atof(coords[2]));
-	// ft_free_split(coords);
-	// char **dir = ft_split(tokens[2], ',');
-	// scene->cam.dir = vec_init(ft_atof(dir[0]), ft_atof(dir[1]), ft_atof(dir[2]));
-	// ft_free_split(dir);
-	// scene->cam.dec = ft_atoi(tokens[3]);
 	printf("Parsed Camera: coord=(%f, %f, %f), direction=(%f, %f, %f), fov=%d\n",
 			coord.x, coord.y, coord.z, direction.x, direction.y, direction.z ,
 			ft_atoi(tokens[3]));
@@ -82,10 +69,6 @@ void	parse_light(t_scene *scene, char **tokens)
 						ft_atof(coords[2]));
 	ft_free_split(coords);
 	scene->light = light_init(coord, ft_atof(tokens[2]));
-	// char **coords = ft_split(tokens[1], ',');
-	// scene->light.coord = vec_init(ft_atof(coords[0]), ft_atof(coords[1]), ft_atof(coords[2]));
-	// ft_free_split(coords);
-	// scene->light.ratio = ft_atof(tokens[2]);
 	printf("Parsed Light: coord=(%f, %f, %f), intensity=%f\n", coord.x, coord.y, coord.z,
 			ft_atof(tokens[2]));
 }
