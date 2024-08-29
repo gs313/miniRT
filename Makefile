@@ -6,14 +6,15 @@
 #    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/08/28 20:43:12 by ookamonu         ###   ########.fr        #
+#    Updated: 2024/08/29 18:13:26 by ookamonu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 
 SRC_DIR = src/
-FILES = minirt.c sphere.c camera.c hit.c color.c scene.c plane.c cylinder.c util.c parser.c
+FILES = minirt.c sphere.c camera.c hit.c color.c scene.c plane.c cylinder.c util.c \
+		parser/parse_file.c parser/parse_cam.c parser/parse_objs.c parser/parse_lights.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc
