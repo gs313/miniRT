@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/03 10:54:26 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:05:15 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <float.h>
 # include "../lib/libvec/vector.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../lib/libft_modified/libft.h"
@@ -194,7 +193,7 @@ void			parse_cylinder(t_scene *scene, char **tokens);
 t_vector		parse_vector(char *token);
 t_color			parse_color(char *token);
 void			is_camera_inside_object(t_camera cam, t_object *obj,
-				unsigned int obj_count);
+					unsigned int obj_count);
 
 // validate.c
 bool			validate_double_range(double value, double min, double max);
