@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 16:22:38 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 09:21:51 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <float.h>
 # include "../lib/libvec/vector.h"
-# include "../lib/MLX42/include/MLX42/MLX42.h" // MLX42 library header
+# include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../lib/libft_modified/libft.h"
 # include "../lib/libft_modified/get_next_line.h"
-// # define WIN_WIDTH 900
-// # define WIN_HEIGHT 600
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 900
+# define WIN_HEIGHT 600
+// # define WIN_WIDTH 1920
+// # define WIN_HEIGHT 1080
+# define MIN_COORD -10000.0
+# define MAX_COORD 10000.0
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
-// # define SPHERE "sp"
-// # define PLANE "pl"
-// # define CYLINDER "cy"
 # define LIGHT "L"
 # define AMBIENT_LIGHT "A"
 # define CAMERA "C"
@@ -181,7 +181,7 @@ t_quard			set_quard(t_object obj, t_vector origin, t_vector dir);
 unsigned int	count_objs(int fd);
 void			ft_free_split(char **split);
 
-//parser.c
+//parser
 void			parse_rt_file(t_scene *scene, const char *filename);
 void			parse_line(t_scene *scene, char *line);
 void			parse_token(t_scene *scene, char **tokens);
@@ -194,5 +194,10 @@ void			parse_cylinder(t_scene *scene, char **tokens);
 t_vector		parse_vector(char *token);
 t_color			parse_color(char *token);
 
+// validate.c
+bool			validate_double_range(double value, double min, double max);
+bool			validate_int_range(int value, int min, int max);
+void			validate_rgb(t_color color);
+void			validate_vector_range(t_vector vec, double min, double max);
 
 #endif

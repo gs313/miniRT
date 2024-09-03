@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/08/29 18:15:01 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 09:09:07 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,17 @@ void	parse_sphere(t_scene *scene, char **tokens)
 
 	printf("Debug: tokens[0]=%s, tokens[1]=%s, tokens[2]=%s, tokens[3]=%s\n",
 		tokens[0], tokens[1], tokens[2], tokens[3]);
+	if (tokens[0] == NULL || tokens[1] == NULL || tokens[2] == NULL
+		|| tokens[3] == NULL)
+	{
+		printf("Error: Sphere position, diameter or color is NULL\n");
+		return ;
+	}
 	coord = parse_vector(tokens[1]);
+	validate_vector_range(coord, MIN_COORD, MAX_COORD);
 	diameter = ft_atof(tokens[2]);
 	color = parse_color(tokens[3]);
+	validate_double_range(diameter, 0.0, MAX_COORD);
 	scene->obj[scene->obj_count] = sphere_init(scene->obj_count, coord,
 			color, diameter);
 	scene->obj_count++;
