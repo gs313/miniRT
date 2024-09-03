@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 01:22:39 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:28:19 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	render(t_scene *scene)
 	int			x;
 	int			y;
 
+    is_camera_inside_object(scene->cam, scene->obj, scene->obj_count);
 	viewport_init(scene);
 	y = 0;
 	while (y < WIN_HEIGHT)

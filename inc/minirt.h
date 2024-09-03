@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/03 09:21:51 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:54:26 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,8 @@ void			parse_plane(t_scene *scene, char **tokens);
 void			parse_cylinder(t_scene *scene, char **tokens);
 t_vector		parse_vector(char *token);
 t_color			parse_color(char *token);
+void			is_camera_inside_object(t_camera cam, t_object *obj,
+				unsigned int obj_count);
 
 // validate.c
 bool			validate_double_range(double value, double min, double max);
