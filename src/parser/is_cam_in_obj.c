@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 02:39:25 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/09/03 23:42:31 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:44:33 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,3 @@ void	is_camera_inside_object(t_camera cam, t_object *obj,
 		i++;
 	}
 }
-
-/*
-Numerical Precision, Algorithm Implementation, Handled of Edge Cases and Library Versions.
-*/
