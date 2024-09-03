@@ -6,30 +6,27 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 02:39:25 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/09/03 21:40:58 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:42:31 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-bool	is_camera_inside_sphere(t_camera cam, t_object obj)
+void	is_camera_inside_sphere(t_camera cam, t_object obj)
 {
 	double	distance;
 
 	distance = sqrt(pow(cam.coord.x - obj.coord.x, 2)
 			+ pow(cam.coord.y - obj.coord.y, 2)
 			+ pow(cam.coord.z - obj.coord.z, 2));
-	printf("Debug: Sphere - Camera distance: %f, Sphere radius: %f\n",
-		distance, obj.d / 2);
-	if (distance < obj.d / 2)
+	if (distance < obj.d / 0.9)
 	{
-		printf("Error: Camera is inside a sphere\n");
+		printf("\nError: Camera is inside a sphere\n\n");
 		exit(EXIT_FAILURE);
 	}
-	return (false);
 }
 
-bool	is_camera_inside_cylinder(t_camera cam, t_object obj)
+void	is_camera_inside_cylinder(t_camera cam, t_object obj)
 {
 	t_vector	cam_to_axis;
 	double		projection;
@@ -42,13 +39,12 @@ bool	is_camera_inside_cylinder(t_camera cam, t_object obj)
 	distance = vec_len(vec_sub(cam.coord, closest_point));
 	if (distance < obj.d / 2 && projection >= 0 && projection <= obj.h)
 	{
-		printf("Error: Camera is inside a cylinder\n");
+		printf("\nError: Camera is inside a cylinder\n\n");
 		exit(EXIT_FAILURE);
 	}
-	return (false);
 }
 
-bool	is_camera_inside_plane(t_camera cam, t_object obj)
+void	is_camera_inside_plane(t_camera cam, t_object obj)
 {
 	t_vector	cam_to_plane;
 	double		distance;
@@ -57,10 +53,9 @@ bool	is_camera_inside_plane(t_camera cam, t_object obj)
 	distance = vec_dot(cam_to_plane, obj.dir);
 	if (fabs(distance) < 1e-6)
 	{
-		printf("Error: Camera is inside a plane\n");
+		printf("\nError: Camera is inside a plane\n\n");
 		exit(EXIT_FAILURE);
 	}
-	return (false);
 }
 
 void	is_camera_inside_object(t_camera cam, t_object *obj,
@@ -86,3 +81,7 @@ void	is_camera_inside_object(t_camera cam, t_object *obj,
 		i++;
 	}
 }
+
+/*
+Numerical Precision, Algorithm Implementation, Handled of Edge Cases and Library Versions.
+*/

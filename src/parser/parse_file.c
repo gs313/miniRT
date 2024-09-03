@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/08/29 18:21:12 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:41:17 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ void	parse_token(t_scene *scene, char **tokens)
 		parse_plane(scene, tokens);
 	else if (ft_strncmp(tokens[0], "cy", 2) == 0)
 		parse_cylinder(scene, tokens);
-	else
-	{
-		printf("\nError: Unrecognized object type '%s' OR None found\n",
-			tokens[0]);
-	}
+
 	ft_free_split(tokens);
 }
