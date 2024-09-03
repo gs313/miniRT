@@ -59,5 +59,6 @@
   "files.associations": {
     "math.h": "c",
     "random": "c"
-  }
+  },
+  "cmake.sourceDirectory": "/Users/prvdnx/Desktop/miniRT/lib/MLX42"
 }

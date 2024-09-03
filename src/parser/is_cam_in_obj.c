@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 02:39:25 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/09/03 23:44:33 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:07:46 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	is_camera_inside_sphere(t_camera cam, t_object obj)
 	distance = sqrt(pow(cam.coord.x - obj.coord.x, 2)
 			+ pow(cam.coord.y - obj.coord.y, 2)
 			+ pow(cam.coord.z - obj.coord.z, 2));
+	//if (distance < obj.d / 2.0)
 	if (distance < obj.d / 0.9)
 	{
 		printf("\nError: Camera is inside a sphere\n\n");
@@ -51,7 +52,7 @@ void	is_camera_inside_plane(t_camera cam, t_object obj)
 
 	cam_to_plane = vec_sub(cam.coord, obj.coord);
 	distance = vec_dot(cam_to_plane, obj.dir);
-	if (fabs(distance) < 1e-6)
+	if (fabs(distance) < SMALL_NUM)
 	{
 		printf("\nError: Camera is inside a plane\n\n");
 		exit(EXIT_FAILURE);
