@@ -12,7 +12,7 @@
 
 #include "../../inc/minirt.h"
 
-void	parse_sphere(t_scene *scene, char **tokens)
+void	parse_sphere(t_scene *scene, char **tokens, bool *parsed)
 {
 	t_vector	coord;
 	double		diameter;
@@ -26,6 +26,7 @@ void	parse_sphere(t_scene *scene, char **tokens)
 		printf("Error: Sphere position, diameter or color is NULL\n");
 		return ;
 	}
+	*parsed = true;
 	coord = parse_vector(tokens[1]);
 	validate_vector_range(coord, MIN_COORD, MAX_COORD);
 	diameter = ft_atof(tokens[2]);

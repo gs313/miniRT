@@ -184,14 +184,15 @@ void			ft_free_split(char **split);
 
 //parser
 void			parse_rt_file(t_scene *scene, const char *filename);
-void			parse_line(t_scene *scene, char *line);
-void			parse_token(t_scene *scene, char **tokens);
-void			parse_ambient(t_scene *scene, char **tokens);
-void			parse_camera(t_scene *scene, char **tokens);
-void			parse_light(t_scene *scene, char **tokens);
-void			parse_sphere(t_scene *scene, char **tokens);
-void			parse_plane(t_scene *scene, char **tokens);
-void			parse_cylinder(t_scene *scene, char **tokens);
+void			parse_lines(t_scene *scene, int fd, bool *parsed);
+void			parse_line(t_scene *scene, char *line, bool *parsed);
+void			parse_token(t_scene *scene, char **tokens, bool *parsed);
+void			parse_ambient(t_scene *scene, char **tokens, bool *parsed);
+void			parse_camera(t_scene *scene, char **tokens, bool *parsed);
+void			parse_light(t_scene *scene, char **tokens, bool *parsed);
+void			parse_sphere(t_scene *scene, char **tokens, bool *parsed);
+void			parse_plane(t_scene *scene, char **tokens, bool *parsed);
+void			parse_cylinder(t_scene *scene, char **tokens, bool *parsed);
 t_vector		parse_vector(char *token);
 t_color			parse_color(char *token);
 void			is_camera_inside_object(t_camera cam, t_object *obj,

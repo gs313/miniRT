@@ -12,7 +12,7 @@
 
 #include "../../inc/minirt.h"
 
-void	parse_cylinder(t_scene *scene, char **tokens)
+void	parse_cylinder(t_scene *scene, char **tok, bool *parsed)
 {
 	t_vector	coord;
 	t_vector	direction;
@@ -20,18 +20,18 @@ void	parse_cylinder(t_scene *scene, char **tokens)
 	double		height;
 	t_color		color;
 
-	printf("Debug: tokens[0]=%s, tokens[1]=%s, tokens[2]=%s, tokens[3]=%s, ",
-		tokens[0], tokens[1], tokens[2], tokens[3]);
-	printf("tokens[4]=%s, tokens[5]=%s\n", tokens[4], tokens[5]);
-	coord = parse_vector(tokens[1]);
+	*parsed = true;
+	printf("Debug: tokens = [0]=%s, [1]=%s, [2]=%s, [3]=%s, [4]=%s, [5]=%s\n",
+		tok[0], tok[1], tok[2], tok[3], tok[4], tok[5]);
+	coord = parse_vector(tok[1]);
 	validate_vector_range(coord, MIN_COORD, MAX_COORD);
-	direction = parse_vector(tokens[2]);
+	direction = parse_vector(tok[2]);
 	validate_vector_range(direction, -1.0, 1.0);
-	diameter = ft_atof(tokens[3]);
+	diameter = ft_atof(tok[3]);
 	validate_double_range(diameter, 0.0, MAX_COORD);
-	height = ft_atof(tokens[4]);
+	height = ft_atof(tok[4]);
 	validate_double_range(height, 0.0, MAX_COORD);
-	color = parse_color(tokens[5]);
+	color = parse_color(tok[5]);
 	scene->obj[scene->obj_count] = cylinder_init(scene->obj_count, coord,
 			cylinder_attr_init(direction, diameter, height), color);
 	scene->obj_count++;

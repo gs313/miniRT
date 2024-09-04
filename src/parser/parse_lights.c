@@ -12,7 +12,7 @@
 
 #include "../../inc/minirt.h"
 
-void	parse_ambient(t_scene *scene, char **tokens)
+void	parse_ambient(t_scene *scene, char **tokens, bool *parsed)
 {
 	t_color	colors;
 	double	ratio;
@@ -24,6 +24,7 @@ void	parse_ambient(t_scene *scene, char **tokens)
 		printf("Error: Ambient light intensity or color is NULL\n");
 		return ;
 	}
+	*parsed = true;
 	colors = parse_color(tokens[2]);
 	ratio = ft_atof(tokens[1]);
 	validate_double_range(ratio, 0.0, 1.0);
@@ -32,7 +33,7 @@ void	parse_ambient(t_scene *scene, char **tokens)
 		scene->amb.ratio, scene->amb.r, scene->amb.g, scene->amb.b);
 }
 
-void	parse_light(t_scene *scene, char **tokens)
+void	parse_light(t_scene *scene, char **tokens, bool *parsed)
 {
 	t_vector	coord;
 
@@ -43,6 +44,7 @@ void	parse_light(t_scene *scene, char **tokens)
 		printf("Error: Light position or intensity is NULL\n");
 		return ;
 	}
+	*parsed = true;
 	coord = parse_vector(tokens[1]);
 	validate_vector_range(coord, MIN_COORD, MAX_COORD);
 	validate_double_range(ft_atof(tokens[2]), 0.0, 1.0);

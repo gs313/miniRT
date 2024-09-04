@@ -54,7 +54,7 @@ int	render(t_scene *scene)
 	int			x;
 	int			y;
 
-	is_camera_inside_object(scene->cam, scene->obj, scene->obj_count);
+	// is_camera_inside_object(scene->cam, scene->obj, scene->obj_count);
 	viewport_init(scene);
 	y = 0;
 	while (y < WIN_HEIGHT)

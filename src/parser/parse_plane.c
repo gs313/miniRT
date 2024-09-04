@@ -12,7 +12,7 @@
 
 #include "../../inc/minirt.h"
 
-void	parse_plane(t_scene *scene, char **tokens)
+void	parse_plane(t_scene *scene, char **tokens, bool *parsed)
 {
 	t_vector	coord;
 	t_vector	direction;
@@ -26,6 +26,7 @@ void	parse_plane(t_scene *scene, char **tokens)
 		printf("Error: Plane position, direction or color is NULL\n");
 		return ;
 	}
+	*parsed = true;
 	coord = parse_vector(tokens[1]);
 	validate_vector_range(coord, MIN_COORD, MAX_COORD);
 	direction = parse_vector(tokens[2]);
