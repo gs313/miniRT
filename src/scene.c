@@ -29,6 +29,8 @@ t_light	light_init(t_vector coord, double ratio)
 	t_light	light;
 
 	light.coord = coord;
+	// light.coord.x = -coord.x;
+	// light.coord.y = -coord.y;
 	light.ratio = ratio;
 	return (light);
 }

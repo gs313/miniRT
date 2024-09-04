@@ -19,8 +19,8 @@ t_object	sphere_init(int id, t_vector coord, t_color color, double d)
 	obj.id = id;
 	obj.type = SPHERE;
 	obj.coord = coord;
-	obj.coord.x = -coord.x;
-	obj.coord.y = -coord.y;
+	// obj.coord.x = -coord.x;
+	// obj.coord.y = -coord.y;
 	obj.r = color.r;
 	obj.g = color.g;
 	obj.b = color.b;

@@ -20,10 +20,10 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../lib/libft_modified/libft.h"
 # include "../lib/libft_modified/get_next_line.h"
-# define WIN_WIDTH 900
-# define WIN_HEIGHT 600
-// # define WIN_WIDTH 1920
-// # define WIN_HEIGHT 1080
+// # define WIN_WIDTH 900
+// # define WIN_HEIGHT 600
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define MIN_COORD -10000.0
 # define MAX_COORD 10000.0
 # define SPHERE 1
