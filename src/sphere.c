@@ -19,14 +19,14 @@ t_object	sphere_init(int id, t_vector coord, t_color color, double d)
 	obj.id = id;
 	obj.type = SPHERE;
 	obj.coord = coord;
-	// obj.coord.x = -coord.x;
-	// obj.coord.y = -coord.y;
 	obj.r = color.r;
 	obj.g = color.g;
 	obj.b = color.b;
 	obj.d = d;
 	return (obj);
 }
+// obj.coord.x = -coord.x;
+// obj.coord.y = -coord.y;
 
 t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir)
 {

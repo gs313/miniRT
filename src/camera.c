@@ -54,7 +54,6 @@ int	render(t_scene *scene)
 	int			x;
 	int			y;
 
-	// is_camera_inside_object(scene->cam, scene->obj, scene->obj_count);
 	viewport_init(scene);
 	y = 0;
 	while (y < WIN_HEIGHT)
@@ -74,6 +73,7 @@ int	render(t_scene *scene)
 	}
 	return (0);
 }
+//render: is_camera_inside_object(scene->cam, scene->obj, scene->obj_count);
 
 uint32_t	background_color(t_vector dir)
 {

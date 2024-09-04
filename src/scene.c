@@ -29,11 +29,11 @@ t_light	light_init(t_vector coord, double ratio)
 	t_light	light;
 
 	light.coord = coord;
-	// light.coord.x = -coord.x;
-	// light.coord.y = -coord.y;
 	light.ratio = ratio;
 	return (light);
 }
+// light.coord.x = -coord.x;
+// light.coord.y = -coord.y;
 
 t_scene	scene_init(unsigned int nb_obj)
 {
@@ -52,7 +52,7 @@ t_scene	scene_init(unsigned int nb_obj)
 void	free_scene(t_scene *scene)
 {
 	printf("freeing scene\n");
-	if(scene->obj)
+	if (scene->obj)
 		free(scene->obj);
 	scene->obj = NULL;
 	printf("freeing mlx\n");

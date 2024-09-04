@@ -19,13 +19,13 @@ void	is_camera_inside_sphere(t_camera cam, t_object obj)
 	distance = sqrt(pow(cam.coord.x - obj.coord.x, 2)
 			+ pow(cam.coord.y - obj.coord.y, 2)
 			+ pow(cam.coord.z - obj.coord.z, 2));
-	//if (distance < obj.d / 2.0)
 	if (distance < obj.d / 0.9)
 	{
 		printf("\nError: Camera is inside a sphere\n\n");
 		exit(EXIT_FAILURE);
 	}
 }
+//if (distance < obj.d / 2.0)
 
 void	is_camera_inside_cylinder(t_camera cam, t_object obj)
 {

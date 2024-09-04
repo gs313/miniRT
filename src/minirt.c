@@ -54,6 +54,19 @@ unsigned int	count_objs(int fd)
 	return (count);
 }
 
+void	check_file_extension(const char *file)
+{
+	size_t	len;
+
+	len = ft_strlen(file);
+	if (len < 3 || file[len - 1] != 't' || file[len - 2] != 'r'
+		|| file[len - 3] != '.')
+	{
+		printf("Error: Invalid file extension\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_scene			scene;
@@ -64,6 +77,7 @@ int	main(int argc, char **argv)
 		printf("Usage: %s <scene.rt>\n", argv[0]);
 		return (1);
 	}
+	check_file_extension(argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -77,7 +91,6 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(scene.mlx, hook, scene.mlx);
 	mlx_loop(scene.mlx);
 	free_scene(&scene);
-	// mlx_terminate(scene.mlx);
 	return (0);
 }
 
