@@ -48,7 +48,89 @@
 // 	return (splitted);
 // }
 
-int	ft_count_words(char const *str, char c)
+static int	ft_count_words(char const *str, char c)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] && (ft_isspace(str[i]) || str[i] == c))
+			i++;
+		if (str[i])
+		{
+			count++;
+			while (str[i] && !(ft_isspace(str[i]) || str[i] == c))
+				i++;
+		}
+	}
+	return (count);
+}
+
+static char	*ft_extract_word(char const *str, char c, int *i)
+{
+	int		start;
+	int		len;
+	char	*word;
+
+	while (str[*i] && (ft_isspace(str[*i]) || str[*i] == c))
+		(*i)++;
+	start = *i;
+	while (str[*i] && !(ft_isspace(str[*i]) || str[*i] == c))
+		(*i)++;
+	len = *i - start;
+	word = (char *)malloc(sizeof(char) * (len + 1));
+	if (!word)
+		return (NULL);
+	ft_strlcpy(word, &str[start], len + 1);
+	return (word);
+}
+
+static void	ft_free_words(char **words, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(words[i]);
+		i++;
+	}
+	free(words);
+}
+
+char	**ft_split(char const *str, char c)
+{
+	int		word_count;
+	char	**words;
+	int		i;
+	int		j;
+
+	if (!str)
+		return (NULL);
+	word_count = ft_count_words(str, c);
+	words = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!words)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (j < word_count)
+	{
+		words[j] = ft_extract_word(str, c, &i);
+		if (!words[j])
+		{
+			ft_free_words(words, j);
+			return (NULL);
+		}
+		j++;
+	}
+	words[j] = NULL;
+	return (words);
+}
+
+/*int	ft_count_words(char const *str, char c)
 {
 	int	count;
 	int	i;
@@ -142,75 +224,4 @@ char	**ft_split(char const *str, char c)
 		return (NULL);
 	}
 	return (words);
-}
-
-// static size_t	word_length(char const *s, char c)
-// {
-// 	size_t	l;
-
-// 	l = 0;
-// 	while (*s && *s != c)
-// 	{
-// 		s++;
-// 		l++;
-// 	}
-// 	return (l);
-// }
-
-// static size_t	word_count(char const *s, char c)
-// {
-// 	size_t	count;
-
-// 	count = 0;
-// 	while (*s)
-// 	{
-// 		while (*s == c)
-// 			s++;
-// 		if (*s != c && *s)
-// 			count++;
-// 		while (*s != c && *s)
-// 			s++;
-// 	}
-// 	return (count);
-// }
-
-// static char	*wordcpy(char const *s, char c)
-// {
-// 	size_t	wl;
-// 	char	*temp;
-
-// 	wl = word_length(s, c);
-// 	temp = malloc((wl + 1) * sizeof(char));
-// 	ft_memcpy(temp, s, wl);
-// 	temp[wl] = '\0';
-// 	return (temp);
-// }
-
-// char	**ft_split(char const *s, char c)
-// {
-// 	char	**ans;
-// 	size_t	wc;
-// 	size_t	ac;
-
-// 	if (s == NULL)
-// 		return (NULL);
-// 	wc = word_count(s, c);
-// 	ans = malloc (sizeof(char *) * (wc + 1));
-// 	if (!ans)
-// 		return (NULL);
-// 	ac = 0;
-// 	while (*s)
-// 	{
-// 		while (*s == c)
-// 			s++;
-// 		if (*s != c && *s)
-// 		{
-// 			ans[ac] = wordcpy(s, c);
-// 			ac++;
-// 		}
-// 		while (*s != c && *s)
-// 			s++;
-// 	}
-// 	ans[wc] = NULL;
-// 	return (ans);
-// }
+}*/
