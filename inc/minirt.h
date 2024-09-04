@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/04 10:13:20 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:46:24 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ t_light			light_init(t_vector coord, double ratio);
 t_scene			scene_init(unsigned int nb_obj);
 void			free_scene(t_scene *scene);
 
-
 //plane.c
 t_object		plane_init(int id, t_vector coord, t_vector dir, t_color color);
 t_hit			hit_plane(t_object obj, t_vector origin, t_vector dir);
@@ -174,6 +173,7 @@ t_object		cylinder_init(int id, t_vector coord,
 					t_cylinder_attr attr, t_color color);
 t_hit			hit_cylinder(t_object obj, t_vector origin, t_vector dir);
 t_hit			hit_cap(t_object obj, t_vector origin, t_vector dir, double t);
+t_cylinder_attr	set_cy_attr(t_object obj, t_quard quard);
 
 //util.c
 double			ft_min(double a, double b);

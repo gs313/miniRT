@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 20:16:48 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 10:48:02 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:45:24 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ t_hit	hit_cap(t_object obj, t_vector origin, t_vector dir, double t)
 	return (hit);
 }
 
-t_cylinder_attr	set_cy_attr(t_object obj, t_vector origin,
-					t_vector dir, t_quard quard)
+t_cylinder_attr	set_cy_attr(t_object obj, t_quard quard)
 {
 	t_cylinder_attr	attr;
 
@@ -72,7 +71,7 @@ t_hit	hit_cylinder(t_object obj, t_vector origin, t_vector dir)
 
 	hit = hit_init();
 	quard = set_quard(obj, origin, dir);
-	attr = set_cy_attr(obj, origin, dir, quard);
+	attr = set_cy_attr(obj, quard);
 	if (quard.discr >= 0)
 	{
 		if (attr.t1 >= 0 || attr.t2 >= 0)

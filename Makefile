@@ -6,7 +6,7 @@
 #    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/09/04 16:03:22 by scharuka         ###   ########.fr        #
+#    Updated: 2024/09/04 17:44:19 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FILES = minirt.c sphere.c camera.c hit.c color.c scene.c plane.c cylinder.c util
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc
-CFLAGS = -I/usr/include -Ilib/MLX42/include -g #-Wall #-Wextra -Werror
+CFLAGS = -I/usr/include -Ilib/MLX42/include -g -Wall -Wextra -Werror
 
 HEADER = inc/minirt.h
 
