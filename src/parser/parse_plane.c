@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/09/03 09:07:48 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:20:00 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	parse_plane(t_scene *scene, char **tokens, bool *parsed)
 	scene->obj[scene->obj_count] = plane_init(scene->obj_count, coord,
 			direction, color);
 	scene->obj_count++;
-	printf("Parsed Plane: coord=(%f,%f,%f), direction=(%f,%f,%f), ", coord.x,
+	printf("Parsed Plane: id= %d coord=(%f,%f,%f), direction=(%f,%f,%f), ", scene->obj_count,coord.x,
 		coord.y, coord.z, direction.x, direction.y, direction.z);
 	printf("color=(%d,%d,%d)\n", color.r, color.g, color.b);
 }

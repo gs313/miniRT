@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:30:35 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/27 03:17:27 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:22:31 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ t_object	sphere_init(int id, t_vector coord, t_color color, double d)
 	obj.d = d;
 	return (obj);
 }
-// obj.coord.x = -coord.x;
-// obj.coord.y = -coord.y;
 
 t_hit	hit_sphere(t_object obj, t_vector origin, t_vector dir)
 {

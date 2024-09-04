@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:51:59 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/04 10:29:28 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:50:07 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ t_light	light_init(t_vector coord, double ratio)
 	light.ratio = ratio;
 	return (light);
 }
-// light.coord.x = -coord.x;
-// light.coord.y = -coord.y;
 
 t_scene	scene_init(unsigned int nb_obj)
 {
@@ -44,18 +42,16 @@ t_scene	scene_init(unsigned int nb_obj)
 	scene.obj_count = 0;
 	scene.amb = amblight_init(0.5, 255, 255, 255);
 	scene.light = light_init(vec_init(0, 0, 0), 0.5);
-	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "====<< MiniRT >>====", true);
+	scene.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Tutorial Window", true);
 	scene.img = mlx_new_image(scene.mlx, WIN_WIDTH, WIN_HEIGHT);
 	return (scene);
 }
 
 void	free_scene(t_scene *scene)
 {
-	printf("freeing scene\n");
-	if (scene->obj)
+	if(scene->obj)
 		free(scene->obj);
 	scene->obj = NULL;
-	printf("freeing mlx\n");
 	mlx_close_window(scene->mlx);
 	mlx_delete_image(scene->mlx, scene->img);
 	mlx_terminate(scene->mlx);

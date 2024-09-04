@@ -30,6 +30,8 @@ t_object	cylinder_init(int id, t_vector coord,
 	obj.id = id;
 	obj.type = CYLINDER;
 	obj.coord = coord;
+	obj.coord.x = -coord.x;
+	obj.coord.y = -coord.y;
 	obj.dir = vec_norm(attr.dir);
 	obj.r = color.r;
 	obj.g = color.g;
@@ -38,8 +40,6 @@ t_object	cylinder_init(int id, t_vector coord,
 	obj.h = attr.h;
 	return (obj);
 }
-// obj.coord.x = -coord.x;
-// obj.coord.y = -coord.y;
 
 t_hit	hit_cap(t_object obj, t_vector origin, t_vector dir, double t)
 {

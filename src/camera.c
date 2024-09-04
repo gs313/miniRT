@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:34:25 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/03 21:42:59 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:19:44 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	viewport_init(t_scene *scene)
 	double		viewport_width;
 	double		viewport_height;
 
-	u = vec_norm(vec_cross(scene->cam.dir, vec_init(0, 1, 0)));
+	u = vec_norm(vec_cross(scene->cam.dir, vec_init(0, -1, 0)));
 	v = vec_norm(vec_cross(u, scene->cam.dir));
 	viewport_width = 2.0f * tan((scene->cam.dec * M_PI / 180) / 2);
 	viewport_height = viewport_width / ((double)WIN_WIDTH / (double)WIN_HEIGHT);

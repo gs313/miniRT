@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 01:48:06 by scharuka          #+#    #+#              #
-#    Updated: 2024/09/03 10:53:49 by ookamonu         ###   ########.fr        #
+#    Updated: 2024/09/04 16:03:22 by scharuka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FILES = minirt.c sphere.c camera.c hit.c color.c scene.c plane.c cylinder.c util
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 
 CC = cc
-CFLAGS = -I/usr/include -Ilib/MLX42/include -Wall #-Wextra -Werror
+CFLAGS = -I/usr/include -Ilib/MLX42/include -g #-Wall #-Wextra -Werror
 
 HEADER = inc/minirt.h
 
@@ -56,7 +56,7 @@ all: libmlx $(NAME)
 $(NAME): $(OBJ) $(HEADER)
 	@make -s -C lib/libft_modified/
 	@make -s -C lib/libvec/
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(LIBVEC_LIB) $(GLFW_LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(LIBVEC_LIB) $(GLFW_LIB) -o	$(NAME)
 
 libmlx:
 	@cmake -B lib/MLX42/build lib/MLX42 && cmake --build lib/MLX42/build -j4

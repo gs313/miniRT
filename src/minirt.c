@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 01:53:42 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/04 10:13:48 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:10:30 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ int	main(int argc, char **argv)
 	}
 	scene = scene_init(count_objs(fd));
 	parse_rt_file(&scene, argv[1]);
+	printf("obj_count: %d\n", scene.obj_count);
+
+	// scene.obj[0] = plane_init(0, vec_init(0, 0, 0), vec_init(0, 0, 1), color_init(0, 0, 255));
 	render(&scene);
 	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
 	mlx_loop_hook(scene.mlx, hook, scene.mlx);
@@ -102,19 +105,54 @@ int	main(int argc, char **argv)
 // 	// mlx_image_t	*img = mlx_new_image(mlx, 640, 360);
 // 	t_scene	scene;
 // 	// scene = scene_init(1);
-// 	scene = scene_init(3);
-// 	scene.obj[0] = cylinder_init(0, vec_init(0, 10, 50),
-//		cylinder_attr_init(vec_init(1, 1, 1), 10, 20), color_init(255, 0, 0));
-// 	scene.obj[1] = plane_init(1, vec_init(0, 5, 0), vec_init(0, 1, 0),
-//			color_init(0, 255, 0));
-// 	scene.obj[2] = sphere_init(2, vec_init(0, 0, 30), color_init(0, 0, 255), 5);
-// 	scene.light = light_init(vec_init(0,-5,0), 0.6);
+
+// 	//good one test
+// 	// scene = scene_init(3);
+// 	// scene.obj[0] = cylinder_init(0, vec_init(0, 10, 50), cylinder_attr_init(vec_init(1, 1, 1), 10, 20), color_init(255, 0, 0));
+// 	// scene.obj[1] = plane_init(1, vec_init(0, 5, 0), vec_init(0, 1, 0), color_init(0, 255, 0));
+// 	// scene.obj[2] = sphere_init(2, vec_init(0, 0, 30), color_init(0, 0, 255), 5);
+// 	// scene.light = light_init(vec_init(0,-5,0), 0.6);
+// 	// scene.amb = amblight_init(0.2, 255, 255, 255);
+// 	// scene.cam = camera_init(vec_init(0,0,0), vec_init(0, 0, 1), 100);
+
+// 	//cy.rt
+// 	// scene = scene_init(9);
+// 	// scene.obj[0] = cylinder_init(0, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(1, 0, 0), 2, 6), color_init(255, 0, 0));
+// 	// scene.obj[1] = cylinder_init(1, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0, 1, 0), 2, 6), color_init(255, 0, 0));
+// 	// scene.obj[2] = cylinder_init(2, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0, 0, 1), 2, 6), color_init(255, 0, 0));
+// 	// scene.obj[3] = cylinder_init(3, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0.70710678118, 0.70710678118, 0), 1, 7 ), color_init(0, 0, 255));
+// 	// scene.obj[4] = cylinder_init(4, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0.70710678118, -0.70710678118, 0), 1, 7 ), color_init(0, 0, 255));
+// 	// scene.obj[5] = cylinder_init(5, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0, 0.70710678118, 0.70710678118), 1, 7 ), color_init(0, 0, 255));
+// 	// scene.obj[6] = cylinder_init(6, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0, -0.70710678118, 0.70710678118), 1, 7 ), color_init(0, 0, 255));
+// 	// scene.obj[7] = cylinder_init(7, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(0.70710678118, 0, 0.70710678118), 1, 7 ), color_init(0, 0, 255));
+// 	// scene.obj[8] = cylinder_init(8, vec_init(0,0,0),
+// 	// 	cylinder_attr_init(vec_init(-0.70710678118, 0, 0.70710678118), 1, 7 ), color_init(0, 0, 255));
+// 	// scene.light = light_init(vec_init(0,0,0), 0.6);
+// 	// scene.amb = amblight_init(0.2, 255, 255, 255);
+// 	// scene.cam = camera_init(vec_init(0,0,-15), vec_init(0, 0, 1), 50);
+
+// 	scene = scene_init(2);
+// 	scene.obj_count = 2;
+// 	scene.obj[0] = sphere_init(0, vec_init(0, 0, 0), color_init(255, 0, 0), 5);
+// 	scene.obj[1] = sphere_init(1, vec_init(0, 0, 10), color_init(0, 0, 255), 10);
+// 	scene.light = light_init(vec_init(0,-5,-10), 1);
 // 	scene.amb = amblight_init(0.2, 255, 255, 255);
-// 	scene.cam = camera_init(vec_init(0,0,0), vec_init(0, 0, 1), 100);
+// 	scene.cam = camera_init(vec_init(0,0,-30), vec_init(0, 0, 1), 100);
+
+
+
 // 	render(&scene);
 // 	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
-// 	// mlx_loop_hook(scene.mlx, (void*)render, &scene); // for key press events
-// 	mlx_loop_hook(scene.mlx, hook, scene.mlx);// hook func for key press events
+// 	// mlx_loop_hook(scene.mlx, (void*)render, &scene); 	// hook function for key press events
+// 	mlx_loop_hook(scene.mlx, hook, scene.mlx); 	// hook function for key press events
 // 	mlx_loop(scene.mlx);
 // 	mlx_terminate(scene.mlx);
 // 	return (0);

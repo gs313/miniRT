@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_vec_n_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 23:43:12 by ookamonu          #+#    #+#             */
-/*   Updated: 2024/09/03 09:58:36 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:24:38 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_vector	parse_vector(char *token)
 		ft_free_split(coords);
 		return (vec_init(0, 0, 0));
 	}
-	vector = vec_init(ft_atof(coords[0]), ft_atof(coords[1]),
+	vector = vec_init(-ft_atof(coords[0]), -ft_atof(coords[1]),
 			ft_atof(coords[2]));
 	ft_free_split(coords);
 	return (vector);
