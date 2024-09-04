@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:21:07 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/03 23:41:41 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:13:20 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ t_amblight		amblight_init(double ratio, unsigned int r, unsigned int g,
 					unsigned int b);
 t_light			light_init(t_vector coord, double ratio);
 t_scene			scene_init(unsigned int nb_obj);
+void			free_scene(t_scene *scene);
+
 
 //plane.c
 t_object		plane_init(int id, t_vector coord, t_vector dir, t_color color);
