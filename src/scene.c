@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 04:51:59 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/04 16:50:07 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:39:03 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_scene	scene_init(unsigned int nb_obj)
 
 void	free_scene(t_scene *scene)
 {
-	if(scene->obj)
+	if (scene->obj)
 		free(scene->obj);
 	scene->obj = NULL;
 	mlx_close_window(scene->mlx);

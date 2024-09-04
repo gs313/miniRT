@@ -6,7 +6,7 @@
 /*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 17:43:20 by scharuka          #+#    #+#             */
-/*   Updated: 2024/09/04 17:16:55 by scharuka         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:38:25 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ t_color	color_init(unsigned int r, unsigned int g, unsigned int b)
 
 int32_t	rgb_to_int(int32_t r, int32_t g, int32_t b)
 {
-	if(r > 255)
+	if (r > 255)
 		r = 255;
-	if(g > 255)
+	if (g > 255)
 		g = 255;
-	if(b > 255)
+	if (b > 255)
 		b = 255;
 	return (r << 24 | g << 16 | b << 8 | 255);
 }
