@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scharuka <scharuka@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 01:53:42 by scharuka          #+#    #+#             */
-/*   Updated: 2024/08/29 16:28:11 by ookamonu         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:13:48 by scharuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int	main(int argc, char **argv)
 	mlx_image_to_window(scene.mlx, scene.img, 0, 0);
 	mlx_loop_hook(scene.mlx, hook, scene.mlx);
 	mlx_loop(scene.mlx);
-	mlx_terminate(scene.mlx);
+	free_scene(&scene);
+	// mlx_terminate(scene.mlx);
 	return (0);
 }
 
