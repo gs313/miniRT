@@ -59,7 +59,7 @@ void	check_file_extension(const char *file)
 	size_t	len;
 
 	len = ft_strlen(file);
-	if (len < 3 || file[len - 1] != 't' || file[len - 2] != 'r'
+	if (len < 2 || file[len - 1] != 't' || file[len - 2] != 'r'
 		|| file[len - 3] != '.')
 	{
 		printf("Error: Invalid file extension\n");
